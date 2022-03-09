@@ -1,6 +1,10 @@
 #include "mainwindow.h"
-
 #include <QApplication>
+#include <iostream>
+#include <QDebug>
+
+using namespace std;
+
 
 int main(int argc, char *argv[])
 {

@@ -26,9 +26,12 @@ FORMS += \
     mainwindow.ui
 
 TRANSLATIONS += \
-    PruebasQT_es_CR.ts
+    Cliente_Memoria_es_CR.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    imagenes.qrc
