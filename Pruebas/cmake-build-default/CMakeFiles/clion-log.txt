@@ -1,0 +1,1 @@
+CMakeLists.txt not found in /home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/Pruebas Select CMakeLists.txt

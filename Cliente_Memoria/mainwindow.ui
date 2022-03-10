@@ -53,13 +53,13 @@
      <string>Tiempo restante:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="mem_usage">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>700</y>
-      <width>21</width>
-      <height>17</height>
+      <x>50</x>
+      <y>690</y>
+      <width>111</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">

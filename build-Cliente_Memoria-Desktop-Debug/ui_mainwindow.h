@@ -26,7 +26,7 @@ public:
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QLabel *label_4;
+    QLabel *mem_usage;
     QLabel *label_5;
     QLabel *label_6;
     QLabel *label_7;
@@ -83,9 +83,9 @@ public:
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(190, 670, 131, 17));
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(70, 700, 21, 17));
+        mem_usage = new QLabel(centralwidget);
+        mem_usage->setObjectName(QString::fromUtf8("mem_usage"));
+        mem_usage->setGeometry(QRect(50, 690, 111, 20));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(240, 700, 41, 17));
@@ -292,7 +292,7 @@ public:
         label->setText(QApplication::translate("MainWindow", "Juego de memoria", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Uso de memoria:", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Tiempo restante:", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "0", nullptr));
+        mem_usage->setText(QApplication::translate("MainWindow", "0", nullptr));
         label_5->setText(QApplication::translate("MainWindow", "null", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "Power Ups", nullptr));
         label_7->setText(QString());
