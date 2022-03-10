@@ -10,11 +10,11 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -65,8 +65,7 @@ public:
     QLabel *label_29;
     QLabel *label_30;
     QLabel *label_42;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -273,14 +272,14 @@ public:
         label_42->setGeometry(QRect(790, 420, 71, 101));
         label_42->setPixmap(QPixmap(QString::fromUtf8(":/imagenes/SW_1.jpg")));
         label_42->setScaledContents(true);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(770, 540, 71, 111));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/imagenes/SW_3.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon);
+        pushButton->setIconSize(QSize(150, 115));
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 941, 22));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 
@@ -332,6 +331,7 @@ public:
         label_29->setText(QString());
         label_30->setText(QString());
         label_42->setText(QString());
+        pushButton->setText(QString());
     } // retranslateUi
 
 };
