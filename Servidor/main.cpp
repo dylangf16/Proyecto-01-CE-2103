@@ -58,7 +58,7 @@ int main(){
         cout << host << "Conectando. . . ." << svc << endl;
     } else{
         inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-        cout << host << "Conectado en: " << ntohs(client.sin_port) << endl;
+        cout << host << " Conectado en: " << ntohs(client.sin_port) << endl;
     }
 
     //Mientras se reciben mensajes, responder

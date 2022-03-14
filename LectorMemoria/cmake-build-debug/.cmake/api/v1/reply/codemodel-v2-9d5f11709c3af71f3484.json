@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "LectorMemoria",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "LectorMemoria::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LectorMemoria-Debug-e017269d7f6758b30e9b.json",
+					"name" : "LectorMemoria",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/LectorMemoria/cmake-build-debug",
+		"source" : "/home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/LectorMemoria"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
