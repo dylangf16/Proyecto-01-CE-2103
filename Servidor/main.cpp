@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sys/types.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -8,6 +7,8 @@
 #include <string>
 
 using namespace std;
+
+//Para conectar usar $telnet localhost 54000
 
 int main(){
     //Creación del Socket
