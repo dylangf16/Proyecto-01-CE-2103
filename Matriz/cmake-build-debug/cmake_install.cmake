@@ -1,4 +1,4 @@
-# Install script for directory: /home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/Matriz
+# Install script for directory: /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/Matriz/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

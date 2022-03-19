@@ -355,7 +355,7 @@ qrc_imagenes.cpp: ../Cliente_Memoria/imagenes.qrc \
 		/usr/lib/qt5/bin/rcc \
 		../Cliente_Memoria/imagenes/SW_3.jpg \
 		../Cliente_Memoria/imagenes/SW_2.jpg \
-		../Cliente_Memoria/imagenes/SW_6.jpg \
+		../Cliente_Memoria/imagenes/SW_back.jpg \
 		../Cliente_Memoria/imagenes/SW_1.jpg \
 		../Cliente_Memoria/imagenes/SW_5.jpg \
 		../Cliente_Memoria/imagenes/SW_4.jpg
