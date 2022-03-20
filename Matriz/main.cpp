@@ -2,7 +2,8 @@
 #include <time.h>
 #include <iostream>
 using namespace std;
-/*
+
+
 //Clase padre de todas las tarjetas
 class TARJETAS{
 private:
@@ -33,7 +34,7 @@ bool TARJETAS::darJugando() {
 string TARJETAS::darImg() {
     return img;
 }
- */
+
 
 int card1 = 0;
 int card2 = 0;
@@ -73,32 +74,36 @@ int verfi(int tipo){
 }
 
 int main() {
-    int filas = 5;
-    int columnas = 10;
-    int numeros[filas][columnas];
+    int nfilas = 5;
+    int ncolumnas = 10;
+    int Filas;
+    int Columnas;
+    int numeros[nfilas][ncolumnas];
     srand(time(NULL));
 
     //Rellenando la matriz
-    for(int i=0;i<filas;i++) {
-        for (int j = 0; j < columnas; j++) {
+    for(int i=0;i<nfilas;i++) {
+        for (int j = 0; j < ncolumnas; j++) {
             int tipo = 1+rand() % 6 - 1;
             numeros[i][j] = verfi(tipo);
         }
     }
-    //Mostrando matriz
-    for(int i=0;i<filas;i++){
-        for(int j=0;j<columnas;j++){
+    //Mostrando nfilas
+    for(int i=0;i<nfilas;i++){
+        for(int j=0;j<ncolumnas;j++){
             cout << numeros[i][j];
         }
         cout << "\n";
     }
 
+/*
     cout << "Cantidad de 1: " << card1 << endl;
     cout << "Cantidad de 2: " << card2 << endl;
     cout << "Cantidad de 3: " << card3 << endl;
     cout << "Cantidad de 4: " << card4 << endl;
     cout << "Cantidad de 5: " << card5 << endl;
 
-    cout << numeros << endl;
+    cout << numeros << endl; */
+
     return 0;
 }

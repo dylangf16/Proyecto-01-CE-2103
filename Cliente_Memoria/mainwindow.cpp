@@ -12,18 +12,31 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
-
 }
 
 
 
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
-    ofstream matris;
+    int filas = 5;
+    int columnas = 10;
 
-    matris.open("/home/dylan16/Documents/Datos 2/Proyecto 01/Proyecto-01-CE-2103/Matriz/main.cpp", ios::out);
+    int numeros = system("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/matriz_dinamica");
+    int* matriz = &numeros;
+    cout << "Dirección de matriz: " << matriz << endl;
+    cout << "Direccion de numeros: "<< numeros << endl;
+
+
+    //Mostrando matriz
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
+            if(*(*(matriz+i)+j) = 1){
+                cout << "1" << endl;
+            }
+        }
+        cout << "\n";
+    }
     cout << "Hola" << endl;
 }

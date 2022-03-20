@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="Pruebas" targetName="Pruebas" />
@@ -12,48 +15,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1826e449-3ee7-4f29-8872-5eac62ad3d92" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_back.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/imagenes.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/imagenes.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/imagenes/SW_5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.cmake/api/v1/reply/cache-v2-82e8dd499481b73b16cc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-177b44c5ae5bf29271da.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-15d222d6a273dd71e8a9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.cmake/api/v1/reply/index-2022-03-17T14-18-50-0010.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Matriz" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Matriz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matriz/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-default/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/cmake-build-debug/CMakeFiles/Servidor.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/cmake-build-debug/CMakeFiles/Servidor.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/cmake-build-debug/Servidor" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/cmake-build-debug/Servidor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Servidor/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/Cliente_Memoria" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/Cliente_Memoria" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/mainwindow.o" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/mainwindow.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/moc_mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/moc_mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/moc_mainwindow.o" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/moc_mainwindow.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.o" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/ui_mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/../build-Cliente_Memoria-Desktop-Debug/ui_mainwindow.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pruebas.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pruebas.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pruebas" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pruebas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +65,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="Docker" />
+    <property name="settings.editor.selected.configurable" value="build.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -123,6 +98,11 @@
       <workItem from="1647650293614" duration="640000" />
       <workItem from="1647651257971" duration="19000" />
       <workItem from="1647651303103" duration="631000" />
+      <workItem from="1647652070296" duration="233000" />
+      <workItem from="1647713166632" duration="13000" />
+      <workItem from="1647713530726" duration="315000" />
+      <workItem from="1647714321086" duration="316000" />
+      <workItem from="1647714646821" duration="152000" />
     </task>
     <servers />
   </component>

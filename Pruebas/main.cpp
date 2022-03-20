@@ -6,6 +6,7 @@ using namespace std;
 int main() {
     int filas = 5;
     int columnas = 10;
-
-    system("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/main.cpp");
+    cout << filas << endl;
+    cout << columnas << endl;
+    return 0;
 }
