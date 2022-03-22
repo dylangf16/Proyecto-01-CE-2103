@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sys/resource.h>
 #include <fstream>
+#include<stdlib.h>
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,10 +24,10 @@ void MainWindow::on_btn_start_clicked(){
     int filas = 5;
     int columnas = 10;
 
-    int numeros = system("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/matriz_dinamica");
-    int* matriz = &numeros;
-    cout << "Dirección de matriz: " << matriz << endl;
-    cout << "Direccion de numeros: "<< numeros << endl;
+
+/*
+    int numeros = system("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/main");
+    cout << numeros << endl;
 
 
     //Mostrando matriz
@@ -39,4 +40,11 @@ void MainWindow::on_btn_start_clicked(){
         cout << "\n";
     }
     cout << "Hola" << endl;
+    */
+}
+
+void MainWindow::on_btn_verif_clicked(){
+     int nombre = system("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/main");
+     cout << "Llegada a la interfaz" << endl;
+     cout << nombre << endl;
 }

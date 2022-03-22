@@ -5,8 +5,10 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <string>
-
+#include <sstream>
 using namespace std;
+stringstream ss;
+int num;
 
 //Para conectar usar $telnet localhost 54000
 
@@ -82,6 +84,9 @@ int main(){
 
         //Mostrar el mensaje
         cout << "Recieved: " << string(buf,0,bytesRecv) << endl;
+        ss << string(buf,0,bytesRecv);
+        ss >> num;
+        
 
         //Reenviar el mensaje
         send(clientSocket, buf, bytesRecv +1, 0);
@@ -90,5 +95,5 @@ int main(){
 
     //Cerrar el Socket
     close(clientSocket);
-    return 0;
+    return num;
     }

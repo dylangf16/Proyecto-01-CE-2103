@@ -1,68 +1,41 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+#include <fstream>
+#include <cstdlib>
 using namespace std;
-
-
-//Clase padre de todas las tarjetas
-class TARJETAS{
-private:
-    int id;
-    bool jugando;
-    string img;
-
-public:
-    TARJETAS(int,bool,string);
-    int darId();
-    bool darJugando();
-    string darImg();
-};
-//Constructor de TARJETAS
-TARJETAS :: TARJETAS(int _id, bool _jugando, string _img) {
-    id = _id;
-    jugando = _jugando;
-    img = _img;
-}
-//Método para dar ID de las Tarjetas
-int TARJETAS::darId() {
-    return id;
-}
-
-bool TARJETAS::darJugando() {
-    return jugando;
-}
-string TARJETAS::darImg() {
-    return img;
-}
-
 
 int card1 = 0;
 int card2 = 0;
 int card3 = 0;
 int card4 = 0;
 int card5 = 0;
+int nFilas = 15;
+int nCol = 10;
+int numeros[15][10];
+
 
 //Verificando que haya pares de todas las cartas
 int verfi(int tipo){
     int entrada = tipo;
-    if(tipo == 1 & card1 < 10){
+    if(tipo == 1 & card1 < 30){
         //TARJETAS t1(1,true,"img");
         card1+=1;
         return tipo;
     }
-    if(tipo == 2 & card2 < 10){
+    if(tipo == 2 & card2 < 30){
         card2+=1;
         return tipo;
     }
-    if(tipo == 3 & card3 < 10){
+    if(tipo == 3 & card3 < 30){
         card3+=1;
         return tipo;
     }
-    if(tipo == 4 & card4 < 10){
+    if(tipo == 4 & card4 < 30){
         card4+=1;
         return tipo;
     }
-    if(tipo == 5 & card5 < 10){
+    if(tipo == 5 & card5 < 30){
         card5+=1;
         return tipo;
     }
@@ -73,28 +46,36 @@ int verfi(int tipo){
     //numeros[i][j] = tipo;
 }
 
-int main() {
-    int nfilas = 5;
-    int ncolumnas = 10;
-    int Filas;
-    int Columnas;
-    int numeros[nfilas][ncolumnas];
-    srand(time(NULL));
+void guardarmatrix(){
+    ofstream archivo("disco.txt");
+    for (int i = 0; i < nFilas; i++){
+        for (int j = 0; j < nCol; j++){
+            archivo << numeros[i][j];
+        }
+        archivo << endl;
+    }
+    archivo.close();
+}
 
+int main() {
+    srand(time(NULL));
     //Rellenando la matriz
-    for(int i=0;i<nfilas;i++) {
-        for (int j = 0; j < ncolumnas; j++) {
+    for(int i=0;i<nFilas;i++) {
+        for (int j = 0; j < nCol; j++) {
             int tipo = 1+rand() % 6 - 1;
             numeros[i][j] = verfi(tipo);
         }
     }
-    //Mostrando nfilas
-    for(int i=0;i<nfilas;i++){
-        for(int j=0;j<ncolumnas;j++){
+    //Mostrando nFilas
+    for(int i=0;i<nFilas;i++){
+        for(int j=0;j<nCol;j++){
             cout << numeros[i][j];
         }
         cout << "\n";
     }
+
+    guardarmatrix();
+
 
 /*
     cout << "Cantidad de 1: " << card1 << endl;
@@ -105,5 +86,7 @@ int main() {
 
     cout << numeros << endl; */
 
-    return 0;
+    cout << **numeros <<endl;
+
+    return **numeros;
 }

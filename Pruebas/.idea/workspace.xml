@@ -16,19 +16,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1826e449-3ee7-4f29-8872-5eac62ad3d92" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Matriz" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Matriz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pruebas.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pruebas.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pruebas" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pruebas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matriz/matriz_dinamica" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/matriz_dinamica" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matriz/matriz_dinamica.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/matriz_dinamica.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +92,7 @@
       <workItem from="1647713530726" duration="315000" />
       <workItem from="1647714321086" duration="316000" />
       <workItem from="1647714646821" duration="152000" />
+      <workItem from="1647893215131" duration="3000" />
     </task>
     <servers />
   </component>

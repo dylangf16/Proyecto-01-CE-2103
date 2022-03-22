@@ -105,7 +105,7 @@
      <string>Turno de:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_43">
+   <widget class="QLabel" name="turno">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -1279,6 +1279,19 @@
     </property>
     <property name="text">
      <string>Empezar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_verif">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>760</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Verificar</string>
     </property>
    </widget>
   </widget>
