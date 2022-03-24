@@ -1,5 +1,5 @@
 #pragma once
 #include <stdlib.h>
 
-void Log(const char* message);
+int Log(const char* message);
 void InitLog();

@@ -1,9 +1,12 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-#include"/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/matriz_dinamica.h"
+#include <stdlib.h>
+#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Headers_Pruebas/Source_Files/Log.cpp"
 
-void prueba(){
-    rellenarMatriz();
-    cout << "Fin del programa prueba" << endl;
-    return;
+
+int main(){
+    InitLog();
+    
+    int num = Log("Hello world!");
+    cout << num << endl;
 }

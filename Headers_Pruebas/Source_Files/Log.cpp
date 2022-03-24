@@ -2,8 +2,10 @@
 #include <stdlib.h>
 
 
-void Log(const char* message){
+int Log(const char* message){
     std::cout << message << std::endl;
+
+    return 0;
 }
 
 void InitLog(){
