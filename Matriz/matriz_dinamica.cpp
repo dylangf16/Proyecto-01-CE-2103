@@ -6,6 +6,7 @@
 #include <sys/resource.h>
 #include <fstream>
 #include <cstdlib>
+#include "matriz_dinamica.h"
 using namespace std;
 
 int **puntero_matriz;
@@ -39,6 +40,7 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nColumnas){
             cout << *(*(puntero_matriz+i)+j);
         }
         cout << "\n";
+    
     /*
     //Liberar la memoria utilizada en la matriz
     for (int i = 0; i < nFilas; i++){
@@ -48,9 +50,11 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nColumnas){
     delete[] puntero_matriz;
     puntero_matriz = nullptr;
     */
+    
     }
 }
 
+/*
 int main(){
     rellenarMatriz();
     mostrarMatriz(puntero_matriz, nFilas, nCol);
@@ -58,3 +62,4 @@ int main(){
 
     return 0;
 }
+*/
