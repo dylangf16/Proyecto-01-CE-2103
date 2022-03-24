@@ -18,8 +18,16 @@ void guardar(){
     ofstream archivo2("hash.txt");
     for (auto pair: MisCartas){
         archivo2 << pair.first << pair.second << "\n";
+        
     }
     archivo2.close();
+}
+
+void revisión(){
+    string 
+    while (getline(archivo,linea)){
+        texto = texto + linea;
+    }
 }
 
 
@@ -29,8 +37,15 @@ int main(){
     }
 
     for(auto pair : MisCartas){
+        int i = 0;
         cout << pair.first << " - " << pair.second << endl;
+        if (std::stoi(pair.first) == 9){
+            cout << "Valor 9 encontrado!!!!!!!"<< endl;
+            cout << pair.second << endl;
+        }
     }
+
+    
 
     guardar();
     

@@ -10,32 +10,32 @@ int card2 = 0;
 int card3 = 0;
 int card4 = 0;
 int card5 = 0;
-int nFilas = 15;
+int nFilas = 5;
 int nCol = 10;
-int numeros[15][10];
+int numeros[5][10];
 
 
 //Verificando que haya pares de todas las cartas
 int verfi(int tipo){
     int entrada = tipo;
-    if(tipo == 1 & card1 < 30){
+    if(tipo == 1 & card1 < 10){
         //TARJETAS t1(1,true,"img");
         card1+=1;
         return tipo;
     }
-    if(tipo == 2 & card2 < 30){
+    if(tipo == 2 & card2 < 10){
         card2+=1;
         return tipo;
     }
-    if(tipo == 3 & card3 < 30){
+    if(tipo == 3 & card3 < 10){
         card3+=1;
         return tipo;
     }
-    if(tipo == 4 & card4 < 30){
+    if(tipo == 4 & card4 < 10){
         card4+=1;
         return tipo;
     }
-    if(tipo == 5 & card5 < 30){
+    if(tipo == 5 & card5 < 10){
         card5+=1;
         return tipo;
     }
@@ -43,16 +43,16 @@ int verfi(int tipo){
         int tipo = rand() % 5 + 1;
         return verfi(tipo);
     }
-    //numeros[i][j] = tipo;
 }
 
+//Guarda la matriz en un txt para manipulación
 void guardarmatrix(){
     ofstream archivo("disco.txt");
     for (int i = 0; i < nFilas; i++){
         for (int j = 0; j < nCol; j++){
             archivo << numeros[i][j];
+            archivo << endl;
         }
-        archivo << endl;
     }
     archivo.close();
 }
@@ -75,18 +75,6 @@ int main() {
     }
 
     guardarmatrix();
-
-
-/*
-    cout << "Cantidad de 1: " << card1 << endl;
-    cout << "Cantidad de 2: " << card2 << endl;
-    cout << "Cantidad de 3: " << card3 << endl;
-    cout << "Cantidad de 4: " << card4 << endl;
-    cout << "Cantidad de 5: " << card5 << endl;
-
-    cout << numeros << endl; */
-
-    cout << **numeros <<endl;
 
     return **numeros;
 }
