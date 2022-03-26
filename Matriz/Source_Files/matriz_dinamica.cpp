@@ -6,18 +6,25 @@
 #include <sys/resource.h>
 #include <fstream>
 #include <cstdlib>
-#include "matriz_dinamica.h"
+
+
 using namespace std;
 
 int **puntero_matriz;
-int nFilas = 5;
-int nCol = 10;
 string linea;
 
-//*(*(puntero_matriz+i)+j)
+void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
+    cout << "Imprimiendo la matriz en memoria:" << endl;
+    for (int i = 0; i < nFilas; i++){
+        for(int j = 0; j < nCol; j++){
+            cout << *(*(puntero_matriz+i)+j);
+        }
+        cout << "\n";
+    }
+}
 
 //Se reserva la matriz en memoria
-void rellenarMatriz(){
+void rellenarMatriz(int nFilas, int nCol){
     ifstream archivo("disco.txt");
     puntero_matriz = new int*[nFilas]; //Reservando memoria para las filas
     for (int i = 0; i < nFilas; i++){
@@ -30,18 +37,10 @@ void rellenarMatriz(){
             *(*(puntero_matriz+i)+j) = std::stoi(linea);
         }
     }
+    mostrarMatriz(puntero_matriz, nFilas, nCol);
 }
 
-
-void mostrarMatriz(int **puntero_matriz, int nFilas, int nColumnas){
-    cout << "Imprimiendo la matriz:" << endl;
-    for (int i = 0; i < nFilas; i++){
-        for(int j = 0; j < nCol; j++){
-            cout << *(*(puntero_matriz+i)+j);
-        }
-        cout << "\n";
-    
-    /*
+void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
     //Liberar la memoria utilizada en la matriz
     for (int i = 0; i < nFilas; i++){
         delete[] puntero_matriz[i];
@@ -49,10 +48,8 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nColumnas){
     }
     delete[] puntero_matriz;
     puntero_matriz = nullptr;
-    */
-    
-    }
 }
+
 
 /*
 int main(){

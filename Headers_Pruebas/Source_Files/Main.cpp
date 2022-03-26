@@ -5,5 +5,5 @@
 
 int main(){
     InitLog();
-    Log("Hello world!");
+    Log("Hello mundo!");
 }
