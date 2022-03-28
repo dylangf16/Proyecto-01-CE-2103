@@ -7,9 +7,57 @@ using namespace std;
 map<string,string> MisCartas;
 map<string,string> MisCartas2;
 string linea;
+int card1 = 0;
+int card2 = 0;
+int card3 = 0;
+int card4 = 0;
+int card5 = 0;
+
+
+string verfi(int tipo){
+    if(tipo == 1 & card1 < 12){
+        string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_1.jpg";
+        card1+=1;
+        return img;
+    }
+    if(tipo == 2 & card2 < 12){
+        string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_2.jpg";
+        card2+=1;
+        return img;
+    }
+    if(tipo == 3 & card3 < 12){
+        string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_3.jpg";
+        card3+=1;
+        return img;
+    }
+    if(tipo == 4 & card4 < 12){
+        string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_4.jpg";
+        card4+=1;
+        return img;
+    }
+    if(tipo == 5 & card5 < 12){
+        string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_5.jpg";
+        card5+=1;
+        return img;
+    }
+    else{
+        int tipo = rand() % 5 + 1;
+        return verfi(tipo);
+    }
+}
+
+//Genera el hashmap inicial según la matriz
+void generarHash(){
+    srand(time(NULL));
+    for (int i = 0; i < 60; i++){
+        int tipo = 1+rand() % 6 - 1;
+        MisCartas.insert(pair<string,string>(to_string(i),verfi(tipo)));
+    }
+}
 
 //Guarda el hashmap con la información de cada casilla en un txt
 void guardar(){
+    
     ifstream archivo("hash.txt");
     string linea;
     string texto;
@@ -24,17 +72,17 @@ void guardar(){
     }
     archivo2.close();
 }
+
 //Permite la búsqueda de la imágen según el número de la carta
-string buscar(string s, int init, int end){
+string buscar(int init, int end, string num_a_buscar){
     ifstream archivo("hash.txt");
     string linea;
     string texto;
     int i = 0;
     while (i < 500){
         getline(archivo,linea);
-        cout << linea << endl;
         while (end = linea.find("-", init), end >=0){
-            if(linea.substr(init, end - init) == "15"){
+            if(linea.substr(init, end - init) == num_a_buscar){
                 init = end + 1;
                 return linea.substr(init, end - init);
             }
@@ -45,24 +93,20 @@ string buscar(string s, int init, int end){
     }
     return "jeje";
 }
-
-
+/*
 int main(){
-    for (int i = 0; i < 60; i++){
-        MisCartas.insert(pair<string,string>(to_string(i),"imagen"));
-    }
+    generarHash();
 
     for(auto pair : MisCartas){
         int i = 0;
         cout << pair.first << " - " << pair.second << endl;
-        if (std::stoi(pair.first) == 9){
-            cout << "Valor 9 encontrado!!!!!!!"<< endl;
-            cout << pair.second << endl;
         }
-    }
+
+    string num_a_buscar = "15";
     guardar();
-    string s = buscar(s,0,0);
+    string s = buscar(0,0,num_a_buscar);
     cout << s << endl;
 
     return 0;
 }
+*/

@@ -11,7 +11,7 @@
 using namespace std;
 
 int **puntero_matriz;
-string linea;
+string linea2;
 
 void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
     cout << "Imprimiendo la matriz en memoria:" << endl;
@@ -33,8 +33,8 @@ void rellenarMatriz(int nFilas, int nCol){
     cout <<"Digitando elementos de la matriz" <<endl;
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j <nCol; j++){
-            getline(archivo,linea);
-            *(*(puntero_matriz+i)+j) = std::stoi(linea);
+            getline(archivo,linea2);
+            *(*(puntero_matriz+i)+j) = std::stoi(linea2);
         }
     }
     mostrarMatriz(puntero_matriz, nFilas, nCol);

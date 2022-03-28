@@ -54,6 +54,7 @@ void generarMatriz(){
         for (int j = 0; j < nCol; j++) {
             int tipo = 1+rand() % 6 - 1;
             numeros[i][j] = verfi(tipo);
+            //numeros[i][j] = num ////// num = 0 /// num++;
         }
     }
 
