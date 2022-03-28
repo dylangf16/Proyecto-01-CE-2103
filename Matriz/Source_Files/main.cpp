@@ -83,8 +83,8 @@ void guardarmatrix(){
 
 int main() {
     //En clase Matriz
-    generarMatriz();
-    guardarmatrix();
+    //generarMatriz();
+    //guardarmatrix();
     //guardarmatrix2();
 
     //En clase matriz_dinamica

@@ -75,7 +75,7 @@ void guardar(){
 
 //Permite la búsqueda de la imágen según el número de la carta
 string buscar(int init, int end, string num_a_buscar){
-    ifstream archivo("hash.txt");
+    ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/hash.txt");
     string linea;
     string texto;
     int i = 0;
@@ -90,9 +90,11 @@ string buscar(int init, int end, string num_a_buscar){
             getline(archivo,linea);
         }
         i++;
+        getline(archivo,linea);
     }
-    return "jeje";
+    return "Fallido";
 }
+
 /*
 int main(){
     generarHash();

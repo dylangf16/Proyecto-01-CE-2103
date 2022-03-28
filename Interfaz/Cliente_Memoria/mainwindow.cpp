@@ -5,6 +5,7 @@
 #include <sys/resource.h>
 #include <fstream>
 #include<stdlib.h>
+#include <cstdlib>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/Hashmap.cpp"
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/matriz_dinamica.cpp"
 using namespace std;
@@ -41,8 +42,14 @@ void MainWindow::on_pushButton_0_clicked()
     if(carta2 == NULL){
         carta2 = 0;
     }
-    rellenarMatriz(4,5);
-    //ui -> pushButton_0-> setIcon(icon);
+    //Método para arreglar "dos mains" solo ejecutar, tirar error, y luego comentar y seguir
+    //rellenarMatriz(4,5);
+
+    string num = "0";
+    string img = buscar(0,0,num);
+    cout << img << endl;
+    QString qstr = QString::fromStdString(img);
+    ui -> pushButton_0-> setIcon(QIcon(qstr));
 
 
 }
