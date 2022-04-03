@@ -1,0 +1,55 @@
+The system is: Linux - 5.13.0-37-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/x86_64-w64-mingw32-gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/3.16.3/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/x86_64-w64-mingw32-g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/3.16.3/CompilerIdCXX/a.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d05da/fast && /usr/bin/make -f CMakeFiles/cmTC_d05da.dir/build.make CMakeFiles/cmTC_d05da.dir/build
+make[1]: Entering directory '/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d05da.dir/testCCompiler.c.o
+/usr/bin/x86_64-w64-mingw32-gcc    -o CMakeFiles/cmTC_d05da.dir/testCCompiler.c.o   -c /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_d05da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d05da.dir/link.txt --verbose=1
+/usr/bin/x86_64-w64-mingw32-gcc      CMakeFiles/cmTC_d05da.dir/testCCompiler.c.o  -o cmTC_d05da 
+make[1]: Leaving directory '/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c488b/fast && /usr/bin/make -f CMakeFiles/cmTC_c488b.dir/build.make CMakeFiles/cmTC_c488b.dir/build
+make[1]: Entering directory '/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c488b.dir/testCXXCompiler.cxx.o
+/usr/bin/x86_64-w64-mingw32-g++     -o CMakeFiles/cmTC_c488b.dir/testCXXCompiler.cxx.o -c /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_c488b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c488b.dir/link.txt --verbose=1
+/usr/bin/x86_64-w64-mingw32-g++       CMakeFiles/cmTC_c488b.dir/testCXXCompiler.cxx.o  -o cmTC_c488b 
+make[1]: Leaving directory '/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/CMakeTmp'
+
+
+

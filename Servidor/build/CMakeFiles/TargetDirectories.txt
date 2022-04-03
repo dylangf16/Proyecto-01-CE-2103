@@ -1,0 +1,3 @@
+/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/rebuild_cache.dir
+/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/edit_cache.dir
+/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build/CMakeFiles/Servidor.dir

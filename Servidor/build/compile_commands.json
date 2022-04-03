@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/build",
+  "command": "/usr/bin/x86_64-w64-mingw32-g++    -g   -std=gnu++14 -o CMakeFiles/Servidor.dir/Server.cpp.o -c /home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/Source_Files/Server.cpp",
+  "file": "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/Source_Files/Server.cpp"
+}
+]
