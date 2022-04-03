@@ -6,6 +6,9 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <string>
+#include <sstream>
+int bytesReceived;
+std::string str;
 
 
 using namespace std;
@@ -61,14 +64,14 @@ string Cliente(string num_a_buscar)
         }
         else
         {
-            //		Display response
-            cout << "SERVER> " << string(buf, bytesReceived) << "\r\n";
+            str = string(buf,bytesReceived);
         }
         break;
+
     } while(true);
 
     //	Close the socket
     close(sock);
 
-    return 0;
+    return str;
 }

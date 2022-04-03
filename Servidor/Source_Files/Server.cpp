@@ -78,12 +78,9 @@ int main()
         }
 
         string num = buscar(0,0,string(buf,0,bytesReceived));
-        cout << string(buf, 0, bytesReceived) << endl;
-        cout << num << endl;
  
         // Echo message back to client
-        send(clientSocket, buf, num.c_str() + 1, 0);
-        break;
+        send(clientSocket, num.c_str(), num.size() + 1, 0);   
     }
  
     // Close the socket
