@@ -48,7 +48,7 @@ void MainWindow::on_pushButton_0_clicked()
     //rellenarMatriz(4,5);
 
     string num = "0";
-    string img = Cliente(0,0,num);
+    string img = Cliente(num);
     QString qstr = QString::fromStdString(img);
     ui -> pushButton_0-> setIcon(QIcon(qstr));
 }

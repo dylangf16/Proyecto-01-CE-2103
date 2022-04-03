@@ -76,11 +76,14 @@ int main()
             cout << "Client disconnected " << endl;
             break;
         }
- 
+
+        string num = buscar(0,0,string(buf,0,bytesReceived));
         cout << string(buf, 0, bytesReceived) << endl;
+        cout << num << endl;
  
         // Echo message back to client
-        send(clientSocket, buf, bytesReceived + 1, 0);
+        send(clientSocket, buf, num.c_str() + 1, 0);
+        break;
     }
  
     // Close the socket
