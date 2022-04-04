@@ -18,6 +18,11 @@ QPushButton* carta_jugada1;
 QPushButton* carta_jugada2;
 
 bool turno = true;
+string pts_extra = "False";
+int i = 5;
+int j = 4;
+string num;
+
 int puntaje_jugador1 = 0;
 int puntaje_jugador2 = 0;
 
@@ -35,7 +40,9 @@ MainWindow::~MainWindow(){
 
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
+    Cliente("Start","0","0","0","0");
 }
+
 
 //Boton verificar igualdad de cartas
 void MainWindow::on_btn_verif_clicked(){
@@ -47,13 +54,17 @@ void MainWindow::on_btn_verif_clicked(){
         if (turno == true){
             cout << "Cartas iguales" << endl;
             puntaje_jugador1 = puntaje_jugador1 + 1;
+            string pts_extra = Cliente("Matrix_mem","0",to_string(i),to_string(j),num);
+            if(pts_extra == "True"){
+                puntaje_jugador1 = puntaje_jugador1 + 1;
+                pts_extra = "False";
+            }
             QString s = QString::number(puntaje_jugador1);
             ui->pts_jugador1->setText(s);
             turno = false;
             ui->turno->setText(jugador2);
             carta1 = "NULL";
             carta2 = "NULL";
-
             carta_jugada1->setDisabled(true);
             carta_jugada2->setDisabled(true);
 
@@ -103,8 +114,8 @@ void MainWindow::on_pushButton_0_clicked()
     //Método para arreglar "dos mains" solo ejecutar, tirar error, y luego comentar y seguir
     //rellenarMatriz(4,5);
 
-    string num = "0";
-    string img = Cliente(num);
+    num =  "0";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -123,8 +134,8 @@ void MainWindow::on_pushButton_0_clicked()
 
 void MainWindow::on_pushButton_1_clicked()
 {
-    string num = "1";
-    string img = Cliente(num);
+    num =  "1";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     ui -> pushButton_1-> setIcon(QIcon(qstr));
@@ -144,8 +155,8 @@ void MainWindow::on_pushButton_1_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    string num = "2";
-    string img = Cliente(num);
+    num =  "2";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen 2: " << img << endl;
@@ -164,8 +175,8 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    string num = "3";
-    string img = Cliente(num);
+    num =  "3";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -186,8 +197,8 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    string num = "4";
-    string img = Cliente(num);
+    num =  "4";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -208,8 +219,8 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    string num = "5";
-    string img = Cliente(num);
+    num =  "5";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -229,8 +240,8 @@ void MainWindow::on_pushButton_5_clicked()
 
 void MainWindow::on_pushButton_6_clicked()
 {
-    string num = "6";
-    string img = Cliente(num);
+    num =  "6";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -250,8 +261,8 @@ void MainWindow::on_pushButton_6_clicked()
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    string num = "7";
-    string img = Cliente(num);
+    num =  "7";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -272,8 +283,8 @@ void MainWindow::on_pushButton_7_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    string num = "8";
-    string img = Cliente(num);
+    num =  "8";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -293,8 +304,8 @@ void MainWindow::on_pushButton_8_clicked()
 
 void MainWindow::on_pushButton_9_clicked()
 {
-    string num = "9";
-    string img = Cliente(num);
+    num =  "9";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -314,8 +325,8 @@ void MainWindow::on_pushButton_9_clicked()
 
 void MainWindow::on_pushButton_10_clicked()
 {
-    string num = "10";
-    string img = Cliente(num);
+    num =  "10";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -335,8 +346,8 @@ void MainWindow::on_pushButton_10_clicked()
 
 void MainWindow::on_pushButton_11_clicked()
 {
-    string num = "1";
-    string img = Cliente(num);
+    num =  "1";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -356,8 +367,8 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::on_pushButton_12_clicked()
 {
-    string num = "12";
-    string img = Cliente(num);
+    num =  "12";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -377,8 +388,8 @@ void MainWindow::on_pushButton_12_clicked()
 
 void MainWindow::on_pushButton_13_clicked()
 {
-    string num = "13";
-    string img = Cliente(num);
+    num =  "13";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -398,8 +409,8 @@ void MainWindow::on_pushButton_13_clicked()
 
 void MainWindow::on_pushButton_14_clicked()
 {
-    string num = "14";
-    string img = Cliente(num);
+    num =  "14";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -419,8 +430,8 @@ void MainWindow::on_pushButton_14_clicked()
 
 void MainWindow::on_pushButton_15_clicked()
 {
-    string num = "15";
-    string img = Cliente(num);
+    num =  "15";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -440,8 +451,8 @@ void MainWindow::on_pushButton_15_clicked()
 
 void MainWindow::on_pushButton_16_clicked()
 {
-    string num = "16";
-    string img = Cliente(num);
+    num =  "16";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -461,8 +472,8 @@ void MainWindow::on_pushButton_16_clicked()
 
 void MainWindow::on_pushButton_17_clicked()
 {
-    string num = "17";
-    string img = Cliente(num);
+    num =  "17";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -482,8 +493,8 @@ void MainWindow::on_pushButton_17_clicked()
 
 void MainWindow::on_pushButton_18_clicked()
 {
-    string num = "18";
-    string img = Cliente(num);
+    num =  "18";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -503,8 +514,8 @@ void MainWindow::on_pushButton_18_clicked()
 
 void MainWindow::on_pushButton_19_clicked()
 {
-    string num = "19";
-    string img = Cliente(num);
+    num =  "19";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -524,8 +535,8 @@ void MainWindow::on_pushButton_19_clicked()
 
 void MainWindow::on_pushButton_20_clicked()
 {
-    string num = "20";
-    string img = Cliente(num);
+    num =  "20";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -545,8 +556,8 @@ void MainWindow::on_pushButton_20_clicked()
 
 void MainWindow::on_pushButton_21_clicked()
 {
-    string num = "21";
-    string img = Cliente(num);
+    num =  "21";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -566,8 +577,8 @@ void MainWindow::on_pushButton_21_clicked()
 
 void MainWindow::on_pushButton_22_clicked()
 {
-    string num = "22";
-    string img = Cliente(num);
+    num =  "22";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -587,8 +598,8 @@ void MainWindow::on_pushButton_22_clicked()
 
 void MainWindow::on_pushButton_23_clicked()
 {
-    string num = "23";
-    string img = Cliente(num);
+    num =  "23";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -608,8 +619,8 @@ void MainWindow::on_pushButton_23_clicked()
 
 void MainWindow::on_pushButton_24_clicked()
 {
-    string num = "24";
-    string img = Cliente(num);
+    num =  "24";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -629,8 +640,8 @@ void MainWindow::on_pushButton_24_clicked()
 
 void MainWindow::on_pushButton_25_clicked()
 {
-    string num = "25";
-    string img = Cliente(num);
+    num =  "25";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -650,8 +661,8 @@ void MainWindow::on_pushButton_25_clicked()
 
 void MainWindow::on_pushButton_26_clicked()
 {
-    string num = "26";
-    string img = Cliente(num);
+    num =  "26";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -671,8 +682,8 @@ void MainWindow::on_pushButton_26_clicked()
 
 void MainWindow::on_pushButton_27_clicked()
 {
-    string num = "27";
-    string img = Cliente(num);
+    num =  "27";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -692,8 +703,8 @@ void MainWindow::on_pushButton_27_clicked()
 
 void MainWindow::on_pushButton_28_clicked()
 {
-    string num = "28";
-    string img = Cliente(num);
+    num =  "28";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -713,8 +724,8 @@ void MainWindow::on_pushButton_28_clicked()
 
 void MainWindow::on_pushButton_29_clicked()
 {
-    string num = "29";
-    string img = Cliente(num);
+    num =  "29";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -734,8 +745,8 @@ void MainWindow::on_pushButton_29_clicked()
 
 void MainWindow::on_pushButton_30_clicked()
 {
-    string num = "30";
-    string img = Cliente(num);
+    num =  "30";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -755,8 +766,8 @@ void MainWindow::on_pushButton_30_clicked()
 
 void MainWindow::on_pushButton_31_clicked()
 {
-    string num = "31";
-    string img = Cliente(num);
+    num =  "31";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -776,8 +787,8 @@ void MainWindow::on_pushButton_31_clicked()
 
 void MainWindow::on_pushButton_32_clicked()
 {
-    string num = "32";
-    string img = Cliente(num);
+    num =  "32";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -797,8 +808,8 @@ void MainWindow::on_pushButton_32_clicked()
 
 void MainWindow::on_pushButton_33_clicked()
 {
-    string num = "33";
-    string img = Cliente(num);
+    num =  "33";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -818,8 +829,8 @@ void MainWindow::on_pushButton_33_clicked()
 
 void MainWindow::on_pushButton_34_clicked()
 {
-    string num = "34";
-    string img = Cliente(num);
+    num =  "34";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -839,8 +850,8 @@ void MainWindow::on_pushButton_34_clicked()
 
 void MainWindow::on_pushButton_35_clicked()
 {
-    string num = "35";
-    string img = Cliente(num);
+    num =  "35";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -860,8 +871,8 @@ void MainWindow::on_pushButton_35_clicked()
 
 void MainWindow::on_pushButton_36_clicked()
 {
-    string num = "36";
-    string img = Cliente(num);
+    num =  "36";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -881,8 +892,8 @@ void MainWindow::on_pushButton_36_clicked()
 
 void MainWindow::on_pushButton_37_clicked()
 {
-    string num = "37";
-    string img = Cliente(num);
+    num =  "37";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -902,8 +913,8 @@ void MainWindow::on_pushButton_37_clicked()
 
 void MainWindow::on_pushButton_38_clicked()
 {
-    string num = "38";
-    string img = Cliente(num);
+    num =  "38";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -923,8 +934,8 @@ void MainWindow::on_pushButton_38_clicked()
 
 void MainWindow::on_pushButton_39_clicked()
 {
-    string num = "39";
-    string img = Cliente(num);
+    num =  "39";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -944,8 +955,8 @@ void MainWindow::on_pushButton_39_clicked()
 
 void MainWindow::on_pushButton_40_clicked()
 {
-    string num = "40";
-    string img = Cliente(num);
+    num =  "40";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -965,8 +976,8 @@ void MainWindow::on_pushButton_40_clicked()
 
 void MainWindow::on_pushButton_41_clicked()
 {
-    string num = "41";
-    string img = Cliente(num);
+    num =  "41";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -986,8 +997,8 @@ void MainWindow::on_pushButton_41_clicked()
 
 void MainWindow::on_pushButton_42_clicked()
 {
-    string num = "42";
-    string img = Cliente(num);
+    num =  "42";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1007,8 +1018,8 @@ void MainWindow::on_pushButton_42_clicked()
 
 void MainWindow::on_pushButton_43_clicked()
 {
-    string num = "43";
-    string img = Cliente(num);
+    num =  "43";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1028,8 +1039,8 @@ void MainWindow::on_pushButton_43_clicked()
 
 void MainWindow::on_pushButton_44_clicked()
 {
-    string num = "44";
-    string img = Cliente(num);
+    num =  "44";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1049,8 +1060,8 @@ void MainWindow::on_pushButton_44_clicked()
 
 void MainWindow::on_pushButton_45_clicked()
 {
-    string num = "45";
-    string img = Cliente(num);
+    num =  "45";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1070,8 +1081,8 @@ void MainWindow::on_pushButton_45_clicked()
 
 void MainWindow::on_pushButton_46_clicked()
 {
-    string num = "46";
-    string img = Cliente(num);
+    num =  "46";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1091,8 +1102,8 @@ void MainWindow::on_pushButton_46_clicked()
 
 void MainWindow::on_pushButton_47_clicked()
 {
-    string num = "47";
-    string img = Cliente(num);
+    num =  "47";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1112,8 +1123,8 @@ void MainWindow::on_pushButton_47_clicked()
 
 void MainWindow::on_pushButton_48_clicked()
 {
-    string num = "48";
-    string img = Cliente(num);
+    num =  "48";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1133,8 +1144,8 @@ void MainWindow::on_pushButton_48_clicked()
 
 void MainWindow::on_pushButton_49_clicked()
 {
-    string num = "49";
-    string img = Cliente(num);
+    num =  "49";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1154,8 +1165,8 @@ void MainWindow::on_pushButton_49_clicked()
 
 void MainWindow::on_pushButton_50_clicked()
 {
-    string num = "50";
-    string img = Cliente(num);
+    num =  "50";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1175,8 +1186,8 @@ void MainWindow::on_pushButton_50_clicked()
 
 void MainWindow::on_pushButton_51_clicked()
 {
-    string num = "51";
-    string img = Cliente(num);
+    num =  "51";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1196,8 +1207,8 @@ void MainWindow::on_pushButton_51_clicked()
 
 void MainWindow::on_pushButton_52_clicked()
 {
-    string num = "52";
-    string img = Cliente(num);
+    num =  "52";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1217,8 +1228,8 @@ void MainWindow::on_pushButton_52_clicked()
 
 void MainWindow::on_pushButton_53_clicked()
 {
-    string num = "53";
-    string img = Cliente(num);
+    num =  "53";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1238,8 +1249,8 @@ void MainWindow::on_pushButton_53_clicked()
 
 void MainWindow::on_pushButton_54_clicked()
 {
-    string num = "54";
-    string img = Cliente(num);
+    num =  "54";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1259,8 +1270,8 @@ void MainWindow::on_pushButton_54_clicked()
 
 void MainWindow::on_pushButton_55_clicked()
 {
-    string num = "55";
-    string img = Cliente(num);
+    num =  "55";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1280,8 +1291,8 @@ void MainWindow::on_pushButton_55_clicked()
 
 void MainWindow::on_pushButton_56_clicked()
 {
-    string num = "56";
-    string img = Cliente(num);
+    num =  "56";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1301,8 +1312,8 @@ void MainWindow::on_pushButton_56_clicked()
 
 void MainWindow::on_pushButton_57_clicked()
 {
-    string num = "57";
-    string img = Cliente(num);
+    num =  "57";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1322,8 +1333,8 @@ void MainWindow::on_pushButton_57_clicked()
 
 void MainWindow::on_pushButton_58_clicked()
 {
-    string num = "58";
-    string img = Cliente(num);
+    num =  "58";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;
@@ -1343,8 +1354,8 @@ void MainWindow::on_pushButton_58_clicked()
 
 void MainWindow::on_pushButton_59_clicked()
 {
-    string num = "59";
-    string img = Cliente(num);
+    num =  "59";
+    string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     cout << "Imagen: " << img << endl;

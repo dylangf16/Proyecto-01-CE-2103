@@ -2,7 +2,8 @@
     "files.associations": {
         "sstream": "cpp",
         "*.tcc": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "iostream": "cpp"
     },
     "cmake.sourceDirectory": "${workspaceFolder}/Source_Files",
     "C_Cpp.errorSquiggles": "Disabled"

@@ -11,15 +11,30 @@
 using namespace std;
 
 int **puntero_matriz;
-string linea2;Michiru Kaio
+string linea2;
+void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
+    cout << "Imprimiendo la matriz en memoria:" << endl;
+    for (int i = 0; i < nFilas; i++){
+        for(int j = 0; j < nCol; j++){
             cout << *(*(puntero_matriz+i)+j);
         }
         cout << "\n";
     }
 }
 
+string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul){
+    for (int i = 0; i < nFilas; i++){
+        for(int j = 0; j < nCol; j++){
+            if( *(*(puntero_matriz+i)+j) = num );
+            resul = "True";
+            return resul;
+        }
+    }
+    return "False";
+}
+
 //Se reserva la matriz en memoria
-void rellenarMatriz(int nFilas, int nCol){
+string rellenarMatriz(int nFilas, int nCol, string num){
     ifstream archivo("disco.txt");
     puntero_matriz = new int*[nFilas]; //Reservando memoria para las filas
     for (int i = 0; i < nFilas; i++){
@@ -33,6 +48,8 @@ void rellenarMatriz(int nFilas, int nCol){
         }
     }
     mostrarMatriz(puntero_matriz, nFilas, nCol);
+    std::string resul = buscar(puntero_matriz,nFilas,nCol,stoi(num),"False");
+    return resul;
 }
 
 void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
@@ -44,6 +61,8 @@ void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
     delete[] puntero_matriz;
     puntero_matriz = nullptr;
 }
+
+
 
 
 /*

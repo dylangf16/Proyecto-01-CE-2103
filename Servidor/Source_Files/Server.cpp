@@ -7,6 +7,8 @@
 #include <string.h>
 #include <string>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/Hashmap.cpp"
+#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/matriz_dinamica.cpp"
+#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/main.cpp"
  
 using namespace std;
  
@@ -62,9 +64,16 @@ int main()
     while (true)
     {
         memset(buf, 0, 4096);
+        string command = "NULL";
+        string val1 = "NULL";
+        string val2 = "NULL";
+        string val3 = "NULL";
+
+        int init = 0;
+        int end = 0;
  
         // Wait for client to send data
-        int bytesReceived = recv(clientSocket, buf, 4096, 0); // Aquí queda esperando
+        int bytesReceived = recv(clientSocket, buf, 4096, 0);
         if (bytesReceived == -1)
         {
             cerr << "Error in recv(). Quitting" << endl;
@@ -77,10 +86,46 @@ int main()
             break;
         }
 
-        string num = buscar(0,0,string(buf,0,bytesReceived));
- 
-        // Echo message back to client
-        send(clientSocket, num.c_str(), num.size() + 1, 0);   
+        //Analizar y dividir string recibido
+        std::string linea = string(buf,0,bytesReceived);
+        while(end=linea.find("-", init), end >= 0){
+            if (command == "NULL"){
+                command = linea.substr(init, end-init);
+                cout << command << endl;
+                init = end + 1;
+            }
+            if (val1 == "NULL"){
+                val1 = linea.substr(init, end-init);
+                cout << val1 << endl; "AQUI ERROR"
+                init = end + 1;
+            }
+            if (val2 == "NULL"){
+                val2 = linea.substr(init, end-init);
+                init = end + 1;
+            }
+            if (val3 == "NULL"){
+                val3 = linea.substr(init, end-init);
+                init = end + 1;
+            }
+        }
+
+        if(command == "IMG"){
+            cout << "Conectado a imagen" << endl;
+            string num = buscar(0,0,val1);
+            send(clientSocket, num.c_str(), num.size() + 1, 0);
+        }
+
+        if(command == "Matrix_mem"){
+            string num = rellenarMatriz(stoi(val1),stoi(val2),val3);
+            send(clientSocket, num.c_str(), num.size() + 1, 0);
+        }
+
+        if(command == "Start"){
+            generarMatriz();
+            string num = "Terminado";
+            send(clientSocket, num.c_str(), num.size() + 1, 0);
+        }
+          
     }
  
     // Close the socket
