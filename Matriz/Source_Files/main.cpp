@@ -12,43 +12,12 @@ int card41 = 0;
 int card51 = 0;
 int nFilas = 6;
 int nCol = 10;
-
 int numeros[6][10];
-
-
-//Verificando que haya pares de todas las cartas
-int verfi1(int tipo){
-    int entrada = tipo;
-    if(tipo == 1 & card11 < 12){
-        //TARJETAS t1(1,true,"img");
-        card11+=1;
-        return tipo;
-    }
-    if(tipo == 2 & card21 < 12){
-        card21+=1;
-        return tipo;
-    }
-    if(tipo == 3 & card31 < 12){
-        card31+=1;
-        return tipo;
-    }
-    if(tipo == 4 & card41 < 12){
-        card41+=1;
-        return tipo;
-    }
-    if(tipo == 5 & card51 < 12){
-        card51+=1;
-        return tipo;
-    }
-    else{
-        int tipo = rand() % 5 + 1;
-        return verfi1(tipo);
-    }
-}
+int numeros2[6][10];
 
 void guardarmatrix(){
     cout << "Guardando matriz en disco" << endl;
-    ofstream archivo("disco.txt");
+    ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     for (int i = 0; i < nFilas; i++){
         for (int j = 0; j < nCol; j++){
             archivo << numeros[i][j];
@@ -57,18 +26,58 @@ void guardarmatrix(){
     }
     archivo.close();
 }
+void guardarmatrix2(){
+    cout << "Guardando matriz en disco" << endl;
+    ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
+    for (int i = 0; i < nFilas; i++){
+        for (int j = 0; j < nCol; j++){
+            archivo << numeros2[i][j];
+            archivo << endl;
+        }
+    }
+    archivo.close();
+}
+
+int aleatorio_en_rango(int minimo, int maximo) {
+    return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
+}
+
+
+void revolverMatriz(){
+    ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
+    for (int i = 0; i < nFilas; i++){
+        for(int j = 0; j <nCol; j++){
+            std::string linea;
+            getline(archivo,linea);
+            int num = stoi(linea);
+            numeros2[i][j] = num;
+        }
+    }
+    int longitud = sizeof(numeros2) / sizeof(numeros2[0]);
+
+    for (int i = 0; i < nFilas; i++){
+        for(int j = 0; j <nCol; j++){
+            int indiceAleatorio = aleatorio_en_rango(0, longitud - 1);
+            // Intercambiar el actual con un elemento del índice aleatorio
+            int temporal = numeros2[i][j];
+            numeros2[i][j] = numeros2[indiceAleatorio][j];
+            numeros2[indiceAleatorio][j] = temporal;
+        }
+    }
+}
 
 void generarMatriz(){
-    srand(time(NULL));
+    int num = 0;
     //Rellenando la matriz
     for(int i=0;i<nFilas;i++) {
         for (int j = 0; j < nCol; j++) {
-            int tipo = 1+rand() % 6 - 1;
-            numeros[i][j] = verfi1(tipo);
-            //numeros[i][j] = num ////// num = 0 /// num++;
+            numeros[i][j] = num;
+            num++;
         }
     }
     guardarmatrix();
+    revolverMatriz();
+    guardarmatrix2();
     
     //Mostrando nFilas
     for(int i=0;i<nFilas;i++){

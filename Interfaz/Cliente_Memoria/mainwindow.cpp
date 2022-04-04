@@ -6,6 +6,8 @@
 #include <fstream>
 #include<stdlib.h>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/Source_Files/Cliente.cpp"
 using namespace std;
 
@@ -22,6 +24,7 @@ string pts_extra = "False";
 int i = 5;
 int j = 4;
 string num;
+string num2;
 
 int puntaje_jugador1 = 0;
 int puntaje_jugador2 = 0;

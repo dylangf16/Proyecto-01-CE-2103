@@ -88,25 +88,27 @@ int main()
 
         //Analizar y dividir string recibido
         std::string linea = string(buf,0,bytesReceived);
+        int conteo = 0;
         while(end=linea.find("-", init), end >= 0){
-            if (command == "NULL"){
+            if (command == "NULL" & conteo == 0){
                 command = linea.substr(init, end-init);
                 cout << command << endl;
                 init = end + 1;
             }
-            if (val1 == "NULL"){
+            if (val1 == "NULL" & conteo == 1){
                 val1 = linea.substr(init, end-init);
-                cout << val1 << endl; "AQUI ERROR"
+                cout << val1 << endl;                
                 init = end + 1;
             }
-            if (val2 == "NULL"){
+            if (val2 == "NULL" & conteo == 2){
                 val2 = linea.substr(init, end-init);
                 init = end + 1;
             }
-            if (val3 == "NULL"){
+            if (val3 == "NULL" & conteo == 3){
                 val3 = linea.substr(init, end-init);
                 init = end + 1;
             }
+            conteo +=1;
         }
 
         if(command == "IMG"){
@@ -122,6 +124,7 @@ int main()
 
         if(command == "Start"){
             generarMatriz();
+            generarHash();
             string num = "Terminado";
             send(clientSocket, num.c_str(), num.size() + 1, 0);
         }

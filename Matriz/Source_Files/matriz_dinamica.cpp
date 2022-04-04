@@ -35,7 +35,7 @@ string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul)
 
 //Se reserva la matriz en memoria
 string rellenarMatriz(int nFilas, int nCol, string num){
-    ifstream archivo("disco.txt");
+    ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     puntero_matriz = new int*[nFilas]; //Reservando memoria para las filas
     for (int i = 0; i < nFilas; i++){
         puntero_matriz[i] = new int[nCol];  //Reservando memoria para las columnas
