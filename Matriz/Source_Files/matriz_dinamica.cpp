@@ -11,12 +11,7 @@
 using namespace std;
 
 int **puntero_matriz;
-string linea2;
-
-void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
-    cout << "Imprimiendo la matriz en memoria:" << endl;
-    for (int i = 0; i < nFilas; i++){
-        for(int j = 0; j < nCol; j++){
+string linea2;Michiru Kaio
             cout << *(*(puntero_matriz+i)+j);
         }
         cout << "\n";
