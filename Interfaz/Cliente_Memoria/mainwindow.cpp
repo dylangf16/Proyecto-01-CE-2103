@@ -46,6 +46,7 @@ MainWindow::~MainWindow(){
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
     Cliente("Start","0","0","0","0");
+    ui -> btn_start ->setDisabled(true);
 }
 
 
@@ -95,6 +96,13 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
         }
+        Cliente("Mix","0","0","0","0");
+        if(i != 1){
+            i = i - 1;
+        }
+        if(j != 1){
+            j = j - 1;
+        }
     //Condicion ambas cartas son diferentes
     } else{
         if (turno == true){
@@ -113,7 +121,6 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada1->setIcon(QIcon(qstr));
             carta_jugada2->setIcon(QIcon(qstr));
         }
-        Cliente("Mix","0","0","0","0");
         carta_jugada1->setIcon(QIcon(qstr));
         carta_jugada2->setIcon(QIcon(qstr));
     }

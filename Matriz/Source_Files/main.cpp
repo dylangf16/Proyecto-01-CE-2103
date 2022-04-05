@@ -64,6 +64,7 @@ void revolverMatriz(){
             numeros2[indiceAleatorio][j] = temporal;
         }
     }
+    guardarmatrix2();
 }
 
 void generarMatriz(){

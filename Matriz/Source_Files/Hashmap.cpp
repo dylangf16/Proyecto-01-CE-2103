@@ -46,19 +46,9 @@ string verfi(int tipo){
     }
 }
 
-//Genera el hashmap inicial según la matriz
-void generarHash(){
-    srand(time(NULL));
-    for (int i = 0; i < 60; i++){
-        int tipo = 1+rand() % 6 - 1;
-        MisCartas.insert(pair<string,string>(to_string(i),verfi(tipo)));
-    }
-}
-
 //Guarda el hashmap con la información de cada casilla en un txt
 void guardar(){
-    
-    ifstream archivo("hash.txt");
+    ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/hash.txt");
     string linea;
     string texto;
     while (getline(archivo,linea)){
@@ -66,12 +56,23 @@ void guardar(){
     }
     archivo.close();
 
-    ofstream archivo2("hash.txt");
+    ofstream archivo2("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/hash.txt");
     for (auto pair: MisCartas){
         archivo2 << pair.first + "-"<< pair.second << "\n";
     }
     archivo2.close();
 }
+
+//Genera el hashmap inicial según la matriz
+void generarHash(){
+    srand(time(NULL));
+    for (int i = 0; i < 60; i++){
+        int tipo = 1+rand() % 6 - 1;
+        MisCartas.insert(pair<string,string>(to_string(i),verfi(tipo)));
+    }
+    guardar();
+}
+
 
 //Permite la búsqueda de la imágen según el número de la carta
 string buscar(int init, int end, string num_a_buscar){
