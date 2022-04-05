@@ -25,9 +25,12 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
 string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul){
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j < nCol; j++){
-            if( *(*(puntero_matriz+i)+j) = num );
-            resul = "True";
-            return resul;
+            int num_matrix = *(*(puntero_matriz+i)+j);
+            cout << num_matrix << endl;
+            if(num_matrix == num){
+                resul = "True";
+                return resul;
+            }
         }
     }
     return "False";

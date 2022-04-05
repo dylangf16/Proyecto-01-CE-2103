@@ -85,6 +85,18 @@ string Cliente(string command, string num_a_buscar, string i, string j, string x
         }
         }
 
+        if (command == "Mix")
+        {
+        string userInput = command + "-" + "NULL";
+
+        int sendRes = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+        if (sendRes == -1)
+        {
+            cout << "Could not send to server! Whoops!\r\n";
+            continue;
+        }
+        }
+
         //		Wait for response
         memset(buf, 0, 4096);
         int bytesReceived = recv(sock, buf, 4096, 0);

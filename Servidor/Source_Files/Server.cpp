@@ -79,12 +79,13 @@ int main()
             cerr << "Error in recv(). Quitting" << endl;
             break;
         }
- 
+        
         if (bytesReceived == 0)
         {
             cout << "Client disconnected " << endl;
             break;
         }
+        
 
         //Analizar y dividir string recibido
         std::string linea = string(buf,0,bytesReceived);
@@ -110,6 +111,7 @@ int main()
             }
             conteo +=1;
         }
+        cout << command << endl;
 
         if(command == "IMG"){
             cout << "Conectado a imagen" << endl;
@@ -128,11 +130,17 @@ int main()
             string num = "Terminado";
             send(clientSocket, num.c_str(), num.size() + 1, 0);
         }
+        if(command == "Mix"){
+            revolverMatriz();
+            string num = "Terminado";
+            send(clientSocket, num.c_str(), num.size() + 1, 0);
+        }
           
     }
  
     // Close the socket
     close(clientSocket);
+    main();
  
     return 0;
 }

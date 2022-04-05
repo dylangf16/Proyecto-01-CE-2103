@@ -15,19 +15,21 @@ string carta1 = "NULL";
 string carta2 = "NULL";
 QString jugador1 = "Tzalil";
 QString jugador2 = "Carkis";
+string carta1_mem = "False";
+string carta2_mem = "False";
+string num;
 
 QPushButton* carta_jugada1;
 QPushButton* carta_jugada2;
 
 bool turno = true;
-string pts_extra = "False";
+
 int i = 5;
 int j = 4;
-string num;
-string num2;
-
 int puntaje_jugador1 = 0;
 int puntaje_jugador2 = 0;
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -56,12 +58,13 @@ void MainWindow::on_btn_verif_clicked(){
     if(carta1 == carta2){
         if (turno == true){
             cout << "Cartas iguales" << endl;
-            puntaje_jugador1 = puntaje_jugador1 + 1;
-            string pts_extra = Cliente("Matrix_mem","0",to_string(i),to_string(j),num);
-            if(pts_extra == "True"){
+            if((carta1_mem == "True") & (carta2_mem == "True")){
+                cout << "Cartas en memoria" << endl;
                 puntaje_jugador1 = puntaje_jugador1 + 1;
-                pts_extra = "False";
+                carta1_mem = "False";
+                carta2_mem = "False";
             }
+            puntaje_jugador1 = puntaje_jugador1 + 1;
             QString s = QString::number(puntaje_jugador1);
             ui->pts_jugador1->setText(s);
             turno = false;
@@ -70,9 +73,16 @@ void MainWindow::on_btn_verif_clicked(){
             carta2 = "NULL";
             carta_jugada1->setDisabled(true);
             carta_jugada2->setDisabled(true);
+            Cliente("Mix","0","0","0","0");
+
 
 
         }else{
+            if((carta1_mem == "True") & (carta2_mem == "True")){
+                puntaje_jugador1 = puntaje_jugador1 + 1;
+                carta1_mem = "False";
+                carta2_mem = "False";
+            }
             puntaje_jugador2 = puntaje_jugador2 + 1;
             QString s = QString::number(puntaje_jugador2);
             ui->pts_jugador2->setText(s);
@@ -83,6 +93,7 @@ void MainWindow::on_btn_verif_clicked(){
 
             carta_jugada1->setDisabled(true);
             carta_jugada2->setDisabled(true);
+            Cliente("Mix","0","0","0","0");
         }
     //Condicion ambas cartas son diferentes
     } else{
@@ -102,6 +113,7 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada1->setIcon(QIcon(qstr));
             carta_jugada2->setIcon(QIcon(qstr));
         }
+        Cliente("Mix","0","0","0","0");
         carta_jugada1->setIcon(QIcon(qstr));
         carta_jugada2->setIcon(QIcon(qstr));
     }
@@ -128,10 +140,13 @@ void MainWindow::on_pushButton_0_clicked()
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+
     }
     else{
         carta2 = img;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -148,10 +163,12 @@ void MainWindow::on_pushButton_1_clicked()
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -168,10 +185,12 @@ void MainWindow::on_pushButton_2_clicked()
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     if(carta2 == "NULL"){
        carta2 = img;
        carta_jugada2=qobject_cast<QPushButton*>(sender());
+       carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -189,11 +208,15 @@ void MainWindow::on_pushButton_3_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+
     }
 
 }
@@ -211,13 +234,14 @@ void MainWindow::on_pushButton_4_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
-
 }
 
 void MainWindow::on_pushButton_5_clicked()
@@ -233,11 +257,13 @@ void MainWindow::on_pushButton_5_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -254,11 +280,13 @@ void MainWindow::on_pushButton_6_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -275,11 +303,13 @@ void MainWindow::on_pushButton_7_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 
 }
@@ -297,11 +327,13 @@ void MainWindow::on_pushButton_8_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -318,11 +350,13 @@ void MainWindow::on_pushButton_9_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -339,17 +373,19 @@ void MainWindow::on_pushButton_10_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
 void MainWindow::on_pushButton_11_clicked()
 {
-    num =  "1";
+    num =  "11";
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
@@ -360,11 +396,13 @@ void MainWindow::on_pushButton_11_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -381,11 +419,13 @@ void MainWindow::on_pushButton_12_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -402,11 +442,13 @@ void MainWindow::on_pushButton_13_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -423,11 +465,13 @@ void MainWindow::on_pushButton_14_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -444,11 +488,13 @@ void MainWindow::on_pushButton_15_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -465,11 +511,13 @@ void MainWindow::on_pushButton_16_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -486,11 +534,13 @@ void MainWindow::on_pushButton_17_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -507,11 +557,13 @@ void MainWindow::on_pushButton_18_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -528,11 +580,13 @@ void MainWindow::on_pushButton_19_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -549,11 +603,13 @@ void MainWindow::on_pushButton_20_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -570,11 +626,13 @@ void MainWindow::on_pushButton_21_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -591,11 +649,13 @@ void MainWindow::on_pushButton_22_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -612,11 +672,13 @@ void MainWindow::on_pushButton_23_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -633,11 +695,13 @@ void MainWindow::on_pushButton_24_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -654,11 +718,13 @@ void MainWindow::on_pushButton_25_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -675,11 +741,13 @@ void MainWindow::on_pushButton_26_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -696,11 +764,13 @@ void MainWindow::on_pushButton_27_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -717,11 +787,13 @@ void MainWindow::on_pushButton_28_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -738,11 +810,13 @@ void MainWindow::on_pushButton_29_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -759,11 +833,13 @@ void MainWindow::on_pushButton_30_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -780,11 +856,13 @@ void MainWindow::on_pushButton_31_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -801,11 +879,13 @@ void MainWindow::on_pushButton_32_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -822,11 +902,13 @@ void MainWindow::on_pushButton_33_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -843,11 +925,13 @@ void MainWindow::on_pushButton_34_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -864,11 +948,13 @@ void MainWindow::on_pushButton_35_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -885,11 +971,13 @@ void MainWindow::on_pushButton_36_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -906,11 +994,13 @@ void MainWindow::on_pushButton_37_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -927,11 +1017,13 @@ void MainWindow::on_pushButton_38_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -948,11 +1040,13 @@ void MainWindow::on_pushButton_39_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -969,11 +1063,13 @@ void MainWindow::on_pushButton_40_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -990,11 +1086,13 @@ void MainWindow::on_pushButton_41_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1011,11 +1109,13 @@ void MainWindow::on_pushButton_42_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1032,11 +1132,13 @@ void MainWindow::on_pushButton_43_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1053,11 +1155,13 @@ void MainWindow::on_pushButton_44_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1074,11 +1178,13 @@ void MainWindow::on_pushButton_45_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1095,11 +1201,13 @@ void MainWindow::on_pushButton_46_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1116,11 +1224,13 @@ void MainWindow::on_pushButton_47_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1137,11 +1247,13 @@ void MainWindow::on_pushButton_48_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1158,11 +1270,13 @@ void MainWindow::on_pushButton_49_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1179,11 +1293,13 @@ void MainWindow::on_pushButton_50_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1200,11 +1316,13 @@ void MainWindow::on_pushButton_51_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1221,11 +1339,13 @@ void MainWindow::on_pushButton_52_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1242,11 +1362,13 @@ void MainWindow::on_pushButton_53_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1263,11 +1385,13 @@ void MainWindow::on_pushButton_54_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1284,11 +1408,13 @@ void MainWindow::on_pushButton_55_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1305,11 +1431,13 @@ void MainWindow::on_pushButton_56_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1326,11 +1454,13 @@ void MainWindow::on_pushButton_57_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1347,11 +1477,13 @@ void MainWindow::on_pushButton_58_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }
 
@@ -1368,10 +1500,12 @@ void MainWindow::on_pushButton_59_clicked()
         carta1 = img;
         cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
+        carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
     else{
         carta2 = img;
         cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
+        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
 }

@@ -15,9 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1826e449-3ee7-4f29-8872-5eac62ad3d92" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Cliente_Memoria/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/matriz_dinamica" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/matriz_dinamica" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Matriz/matriz_dinamica.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/matriz_dinamica.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Interfaz/Cliente_Memoria/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Interfaz/Cliente_Memoria/mainwindow.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matriz/Source_Files/disco.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Matriz/Source_Files/disco.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/Source_Files/Cliente.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/Source_Files/Cliente.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Servidor/Source_Files/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Servidor/Source_Files/Server.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -53,11 +53,6 @@ void generarHash(){
         int tipo = 1+rand() % 6 - 1;
         MisCartas.insert(pair<string,string>(to_string(i),verfi(tipo)));
     }
-    cout << card1 << endl;
-    cout << card2 << endl;
-    cout << card3 << endl;
-    cout << card4 << endl;
-    cout << card5 << endl;
 }
 
 //Guarda el hashmap con la información de cada casilla en un txt
