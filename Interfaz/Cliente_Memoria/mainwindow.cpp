@@ -13,14 +13,16 @@ using namespace std;
 
 string carta1 = "NULL";
 string carta2 = "NULL";
-QString jugador1 = "Tzalil";
-QString jugador2 = "Carkis";
+QString jugador1;
+QString jugador2;
 string carta1_mem = "False";
 string carta2_mem = "False";
 string num;
 
 QPushButton* carta_jugada1;
+QPushButton* carta_jugada1_1;
 QPushButton* carta_jugada2;
+QPushButton* carta_jugada2_2;
 
 bool turno = true;
 
@@ -46,7 +48,15 @@ MainWindow::~MainWindow(){
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
     Cliente("Start","0","0","0","0");
+    ui -> name_jugador1 -> setText(ui->lineEdit->text());
+    jugador1 = ui->lineEdit->text();
+    ui -> name_jugador2 -> setText(ui->lineEdit_2->text());
+    jugador2 =ui->lineEdit_2->text();
+
     ui -> btn_start ->setDisabled(true);
+    ui -> lineEdit -> setDisabled(true);
+    ui -> lineEdit_2 -> setDisabled(true);
+    ui -> btn_verif ->setDisabled(false);
 }
 
 
@@ -54,6 +64,19 @@ void MainWindow::on_btn_start_clicked(){
 void MainWindow::on_btn_verif_clicked(){
     string img = ":/imagenes/SW_back.jpg";
     QString qstr = QString::fromStdString(img);
+
+    carta_jugada1_1 = carta_jugada1;
+    carta_jugada2_2 = carta_jugada1;
+
+    if(puntaje_jugador1 == 5 || puntaje_jugador2 == 5){
+        ui->pwup_1->setDisabled(false);
+    }
+    if(puntaje_jugador1 == 10 || puntaje_jugador2 == 10){
+        ui->pwup_2->setDisabled(false);
+    }
+    if(puntaje_jugador1 == 15 || puntaje_jugador2 == 15){
+        ui->pwup_2->setDisabled(false);
+    }
 
     //Condicion de que ambas cartas son iguales
     if(carta1 == carta2){
@@ -1515,4 +1538,11 @@ void MainWindow::on_pushButton_59_clicked()
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
     }
+}
+
+void MainWindow::on_pwup_1_clicked()
+{
+    i +=3;
+    j +=3;
+    Cliente("Matrix_mem",num,to_string(i),to_string(j),"0");
 }
