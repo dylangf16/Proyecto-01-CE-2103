@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+//#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/memoria_ncurses.cpp"
 
 using namespace std;
 int **puntero_matriz;
@@ -65,7 +66,8 @@ string rellenarMatriz(int nFilas, int nCol, string num){
     string.append(" | tail -n 1 | awk '/[0-9]K/{print $2}'");
     char const *pchar = string.c_str();
     cout << id << endl;
-    cout << system(pchar) << endl;
+    int memoria_usada = system(pchar);
+    //mostrar_mem(memoria_usada);
 
 
     mostrarMatriz(puntero_matriz, nFilas, nCol);
@@ -77,8 +79,9 @@ string rellenarMatriz(int nFilas, int nCol, string num){
 
 
 int main(){
-    rellenarMatriz(4,5,"5");
+    rellenarMatriz(8,7,"5");
     cout << "Fin del programa de matriz_dinamica" << endl;
 
     return 0;
 }
+
