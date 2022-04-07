@@ -5,10 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
-
-
-
 
 using namespace std;
 int **puntero_matriz;
@@ -51,24 +47,10 @@ void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
 string rellenarMatriz(int nFilas, int nCol, string num){
     ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
 
-    /*
-    //Reserva la memoria para las Filas
-    for(int i = 0; i < nFilas; i++){
-        int *p = (int*)malloc(1024*100);
-        memset(p,1,1024*100);
-    }
-
-    //Reserva la memoria para las columnas
-    for(int i = 0; i < nCol; i++){
-        int *p = (int*)malloc(1024*100);
-        memset(p,1,1024*100);
-    }
-    */
     //Establece un valor a cada posición de la matris dinámica
-    int **puntero_matriz = (int**) malloc(nFilas*nCol);
-    puntero_matriz = new int*[nFilas]; 
+    puntero_matriz = (int**) malloc(1024*100); 
     for (int i = 0; i < nFilas; i++){
-        puntero_matriz[i] = new int[nCol];
+        puntero_matriz[i] = (int*) malloc(1024*100);
     }
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j <nCol; j++){
@@ -90,13 +72,12 @@ string rellenarMatriz(int nFilas, int nCol, string num){
     //std::this_thread::sleep_for(std::chrono::milliseconds(10000));
     std::string resul = buscar(puntero_matriz,nFilas,nCol,stoi(num),"False");
     eliminar_memoria(puntero_matriz,nFilas,nCol);
-    cout << system(pchar) << endl;
     return resul;
 }
 
 
 int main(){
-    rellenarMatriz(1,2,"5");
+    rellenarMatriz(4,5,"5");
     cout << "Fin del programa de matriz_dinamica" << endl;
 
     return 0;

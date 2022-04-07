@@ -100,6 +100,7 @@ string buscar(int init, int end, string num_a_buscar){
 int main(){
     generarHash();
 
+    
     for(auto pair : MisCartas){
         int i = 0;
         cout << pair.first << " - " << pair.second << endl;
@@ -109,6 +110,7 @@ int main(){
     guardar();
     string s = buscar(0,0,num_a_buscar);
     cout << s << endl;
+    
 
     return 0;
 }
