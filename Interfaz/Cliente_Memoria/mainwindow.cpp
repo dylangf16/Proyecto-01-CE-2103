@@ -18,11 +18,18 @@ QString jugador2;
 string carta1_mem = "False";
 string carta2_mem = "False";
 string num;
+string num_pw2_1 = "NULL";
+string num_pw2_2 = "NULL";
+string num_pw2_3 = "NULL";
+string num_pw2_4 = "NULL";
+
 
 QPushButton* carta_jugada1;
-QPushButton* carta_jugada1_1;
 QPushButton* carta_jugada2;
-QPushButton* carta_jugada2_2;
+QPushButton* carta_pw2_1;
+QPushButton* carta_pw2_2;
+QPushButton* carta_pw2_3;
+QPushButton* carta_pw2_4;
 
 bool turno = true;
 
@@ -44,7 +51,6 @@ MainWindow::~MainWindow(){
 }
 
 
-
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
     Cliente("Start","0","0","0","0");
@@ -64,9 +70,6 @@ void MainWindow::on_btn_start_clicked(){
 void MainWindow::on_btn_verif_clicked(){
     string img = ":/imagenes/SW_back.jpg";
     QString qstr = QString::fromStdString(img);
-
-    carta_jugada1_1 = carta_jugada1;
-    carta_jugada2_2 = carta_jugada1;
 
     if(puntaje_jugador1 == 5 || puntaje_jugador2 == 5){
         ui->pwup_1->setDisabled(false);
@@ -116,6 +119,9 @@ void MainWindow::on_btn_verif_clicked(){
             ui->turno->setText(jugador1);
 
             carta_jugada1->setDisabled(true);
+            if(num_pw2_1 != "NULL"){
+
+            }
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
         }
@@ -126,6 +132,7 @@ void MainWindow::on_btn_verif_clicked(){
         if(j != 1){
             j = j - 1;
         }
+
     //Condicion ambas cartas son diferentes
     } else{
         if (turno == true){
@@ -149,10 +156,80 @@ void MainWindow::on_btn_verif_clicked(){
     }
 }
 
-int buscar_carta_presionada(){
+int ChanceCartaAleatoria(string num, QPushButton* btn_carta){
+    if(num_pw2_1 == "NULL"){
+        num_pw2_1 = num;
+        cout << "Carta 1 escogida: " << num_pw2_1<< endl;
+        carta_pw2_1 = btn_carta;
+        return 0;
+    }
+    if(num_pw2_2 == "NULL"){
+        num_pw2_2 = num;
+        cout << "Carta 2 escogida: " << num_pw2_2<< endl;
+        carta_pw2_2 = btn_carta;
+        return 0;
 
+    }
+    if(num_pw2_3 == "NULL"){
+        num_pw2_3 = num;
+        cout << "Carta 3 escogida: " << num_pw2_3 << endl;
+        carta_pw2_3 = btn_carta;
+        return 0;
+
+    }
+    else{
+        num_pw2_1 = "NULL";
+        num_pw2_2 = "NULL";
+        num_pw2_3 = "NULL";
+        cout << "Cartas reiniciadas" << endl;
+    }
     return 0;
 }
+
+//Aumentar las cartas en memoria para tener más posibilidad de pts extra
+void MainWindow::on_pwup_1_clicked()
+{
+    ui->label_7->setText("Cartas en memoria aumentadas, mayor posibilidad de puntos extra!!!!!!");
+    i +=3;
+    j +=3;
+    Cliente("Matrix_mem",num,to_string(i),to_string(j),"0");
+}
+
+//Mostar las últimas 4 cartas jugadas
+void MainWindow::on_pwup_2_clicked()
+{
+    ui->label_7->setText("Ojo las cartas Owo");
+    string img1 = Cliente("IMG",num_pw2_1,"0","0","0");
+    QString qstr1 = QString::fromStdString(img1);
+    carta_pw2_1 ->setIcon(QIcon(qstr1));
+
+    string img2 = Cliente("IMG",num_pw2_2,"0","0","0");
+    QString qstr2 = QString::fromStdString(img2);
+    carta_pw2_2 ->setIcon(QIcon(qstr2));
+
+    string img3 = Cliente("IMG",num_pw2_3,"0","0","0");
+    QString qstr3 = QString::fromStdString(img3);
+    carta_pw2_3 ->setIcon(QIcon(qstr3));
+    /*
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+
+    string img = ":/imagenes/SW_back.jpg";
+    QString qstr = QString::fromStdString(img);
+    carta_pw2_1 ->setIcon(QIcon(qstr));
+    carta_pw2_2 ->setIcon(QIcon(qstr));
+    carta_pw2_3 ->setIcon(QIcon(qstr));
+    */
+}
+
+//Robar un turno
+void MainWindow::on_pwup_3_clicked()
+{
+     ui->label_7->setText("Turno robado jejeje");
+
+}
+
+
+
 //Carta 0
 void MainWindow::on_pushButton_0_clicked()
 {
@@ -163,21 +240,22 @@ void MainWindow::on_pushButton_0_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_0-> setIcon(QIcon(qstr));
-
 
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
 
     }
     else{
         carta2 = img;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
+
 }
 
 void MainWindow::on_pushButton_1_clicked()
@@ -187,18 +265,20 @@ void MainWindow::on_pushButton_1_clicked()
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
     ui -> pushButton_1-> setIcon(QIcon(qstr));
-    cout << "Imagen 1: " << img << endl;
+
 
 
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -209,18 +289,19 @@ void MainWindow::on_pushButton_2_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen 2: " << img << endl;
     ui -> pushButton_2-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     if(carta2 == "NULL"){
        carta2 = img;
        carta_jugada2=qobject_cast<QPushButton*>(sender());
        carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+       ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -231,21 +312,20 @@ void MainWindow::on_pushButton_3_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_3-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
 
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
 
     }
 
@@ -257,20 +337,19 @@ void MainWindow::on_pushButton_4_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_4-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -280,20 +359,19 @@ void MainWindow::on_pushButton_5_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_5-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -303,20 +381,19 @@ void MainWindow::on_pushButton_6_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_6-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -326,20 +403,19 @@ void MainWindow::on_pushButton_7_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_7-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 
 }
@@ -350,20 +426,19 @@ void MainWindow::on_pushButton_8_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
     ui -> pushButton_8-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -373,20 +448,22 @@ void MainWindow::on_pushButton_9_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_9-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -396,20 +473,22 @@ void MainWindow::on_pushButton_10_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_10-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -419,20 +498,22 @@ void MainWindow::on_pushButton_11_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_11-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -442,20 +523,22 @@ void MainWindow::on_pushButton_12_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_12-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -465,20 +548,22 @@ void MainWindow::on_pushButton_13_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_13-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -488,20 +573,22 @@ void MainWindow::on_pushButton_14_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_14-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -511,20 +598,22 @@ void MainWindow::on_pushButton_15_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_15-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -534,20 +623,22 @@ void MainWindow::on_pushButton_16_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_16-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -557,20 +648,22 @@ void MainWindow::on_pushButton_17_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_17-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -580,20 +673,22 @@ void MainWindow::on_pushButton_18_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_18-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -603,20 +698,22 @@ void MainWindow::on_pushButton_19_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_19-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -626,20 +723,22 @@ void MainWindow::on_pushButton_20_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_20-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -649,20 +748,22 @@ void MainWindow::on_pushButton_21_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_21-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -672,20 +773,22 @@ void MainWindow::on_pushButton_22_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_22-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -695,20 +798,22 @@ void MainWindow::on_pushButton_23_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_23-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -718,20 +823,22 @@ void MainWindow::on_pushButton_24_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_24-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -741,20 +848,22 @@ void MainWindow::on_pushButton_25_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_25-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -764,20 +873,22 @@ void MainWindow::on_pushButton_26_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_26-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -787,20 +898,22 @@ void MainWindow::on_pushButton_27_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_27-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -810,20 +923,22 @@ void MainWindow::on_pushButton_28_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_28-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -833,20 +948,22 @@ void MainWindow::on_pushButton_29_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_29-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -856,20 +973,22 @@ void MainWindow::on_pushButton_30_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_30-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -879,20 +998,22 @@ void MainWindow::on_pushButton_31_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_31-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -902,20 +1023,22 @@ void MainWindow::on_pushButton_32_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_32-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -925,20 +1048,22 @@ void MainWindow::on_pushButton_33_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_33-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -948,20 +1073,22 @@ void MainWindow::on_pushButton_34_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_34-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -971,20 +1098,22 @@ void MainWindow::on_pushButton_35_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_35-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -994,20 +1123,22 @@ void MainWindow::on_pushButton_36_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_36-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1017,20 +1148,22 @@ void MainWindow::on_pushButton_37_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_37-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1040,20 +1173,22 @@ void MainWindow::on_pushButton_38_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_38-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1063,20 +1198,22 @@ void MainWindow::on_pushButton_39_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_39-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1086,20 +1223,22 @@ void MainWindow::on_pushButton_40_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_40-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1109,20 +1248,22 @@ void MainWindow::on_pushButton_41_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_41-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1132,20 +1273,22 @@ void MainWindow::on_pushButton_42_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_42-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1155,20 +1298,22 @@ void MainWindow::on_pushButton_43_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_43-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1178,20 +1323,22 @@ void MainWindow::on_pushButton_44_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_44-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1201,20 +1348,22 @@ void MainWindow::on_pushButton_45_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_45-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1224,20 +1373,22 @@ void MainWindow::on_pushButton_46_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_46-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1247,20 +1398,22 @@ void MainWindow::on_pushButton_47_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_47-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1270,20 +1423,22 @@ void MainWindow::on_pushButton_48_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_48-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1293,20 +1448,22 @@ void MainWindow::on_pushButton_49_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_49-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1316,20 +1473,22 @@ void MainWindow::on_pushButton_50_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_50-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1339,20 +1498,22 @@ void MainWindow::on_pushButton_51_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_51-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1362,20 +1523,22 @@ void MainWindow::on_pushButton_52_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_52-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1385,20 +1548,22 @@ void MainWindow::on_pushButton_53_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_53-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1408,20 +1573,22 @@ void MainWindow::on_pushButton_54_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_54-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1431,20 +1598,22 @@ void MainWindow::on_pushButton_55_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_55-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1454,20 +1623,22 @@ void MainWindow::on_pushButton_56_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_56-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1477,20 +1648,22 @@ void MainWindow::on_pushButton_57_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_57-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1500,20 +1673,22 @@ void MainWindow::on_pushButton_58_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_58-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
@@ -1523,26 +1698,23 @@ void MainWindow::on_pushButton_59_clicked()
     string img = Cliente("IMG",num,"0","0","0");
     img.erase(img.end() -1);
     QString qstr = QString::fromStdString(img);
-    cout << "Imagen: " << img << endl;
+
     ui -> pushButton_59-> setIcon(QIcon(qstr));
 
     if(carta1 == "NULL"){
         carta1 = img;
-        cout << carta1 << endl;
+
         carta_jugada1=qobject_cast<QPushButton*>(sender());
         carta1_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada1);
     }
     else{
         carta2 = img;
-        cout << carta2 << endl;
+
         carta_jugada2=qobject_cast<QPushButton*>(sender());
         carta2_mem = Cliente("Matrix_mem",num,to_string(i),to_string(j),num);
+        ChanceCartaAleatoria(num, carta_jugada2);
     }
 }
 
-void MainWindow::on_pwup_1_clicked()
-{
-    i +=3;
-    j +=3;
-    Cliente("Matrix_mem",num,to_string(i),to_string(j),"0");
-}
+

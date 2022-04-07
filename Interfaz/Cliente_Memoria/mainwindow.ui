@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1163</width>
-    <height>938</height>
+    <width>1174</width>
+    <height>940</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Juego de Memoria!!!!!</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -1586,7 +1589,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>870</y>
+      <y>850</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -1597,12 +1600,12 @@
    </widget>
    <widget class="QPushButton" name="pwup_2">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>870</y>
+      <y>850</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -1618,7 +1621,7 @@
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>870</y>
+      <y>850</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -1645,6 +1648,19 @@
       <width>151</width>
       <height>25</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>890</y>
+      <width>491</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>null</string>
     </property>
    </widget>
    <zorder>pushButton_55</zorder>
@@ -1726,6 +1742,7 @@
    <zorder>pwup_3</zorder>
    <zorder>lineEdit</zorder>
    <zorder>lineEdit_2</zorder>
+   <zorder>label_7</zorder>
   </widget>
  </widget>
  <resources>

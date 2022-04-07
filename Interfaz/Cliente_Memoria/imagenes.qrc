@@ -6,5 +6,6 @@
         <file>imagenes/SW_4.jpg</file>
         <file>imagenes/SW_5.jpg</file>
         <file>imagenes/SW_back.jpg</file>
+        <file>imagenes/fondo.jpg</file>
     </qresource>
 </RCC>

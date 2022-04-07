@@ -93,12 +93,10 @@ int main()
         while(end=linea.find("-", init), end >= 0){
             if (command == "NULL" & conteo == 0){
                 command = linea.substr(init, end-init);
-                cout << command << endl;
                 init = end + 1;
             }
             if (val1 == "NULL" & conteo == 1){
                 val1 = linea.substr(init, end-init);
-                cout << val1 << endl;                
                 init = end + 1;
             }
             if (val2 == "NULL" & conteo == 2){
@@ -111,10 +109,8 @@ int main()
             }
             conteo +=1;
         }
-        cout << command << endl;
 
         if(command == "IMG"){
-            cout << "Conectado a imagen" << endl;
             string num = buscar(0,0,val1);
             send(clientSocket, num.c_str(), num.size() + 1, 0);
         }

@@ -48,7 +48,6 @@ string Cliente(string command, string num_a_buscar, string i, string j, string x
         if (command == "IMG")
         {
         string userInput = command + "-" + num_a_buscar + "-" + "NULL";
-        cout << userInput << endl;
 
         int sendRes = send(sock, userInput.c_str(), userInput.size() + 1, 0);
         if (sendRes == -1)

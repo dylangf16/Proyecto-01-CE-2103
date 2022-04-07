@@ -16,7 +16,6 @@ int numeros[6][10];
 int numeros2[6][10];
 
 void guardarmatrix(){
-    cout << "Guardando matriz en disco" << endl;
     ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     for (int i = 0; i < nFilas; i++){
         for (int j = 0; j < nCol; j++){
@@ -27,7 +26,6 @@ void guardarmatrix(){
     archivo.close();
 }
 void guardarmatrix2(){
-    cout << "Guardando matriz en disco" << endl;
     ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     for (int i = 0; i < nFilas; i++){
         for (int j = 0; j < nCol; j++){
@@ -79,14 +77,6 @@ void generarMatriz(){
     guardarmatrix();
     revolverMatriz();
     guardarmatrix2();
-    
-    //Mostrando nFilas
-    for(int i=0;i<nFilas;i++){
-        for(int j=0;j<nCol;j++){
-            cout << numeros[i][j];
-        }
-        cout << "\n";
-    }
 }
 
 //Guarda la matriz en un txt para manipulación
