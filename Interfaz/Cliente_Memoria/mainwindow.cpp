@@ -6,8 +6,7 @@
 #include <fstream>
 #include<stdlib.h>
 #include <cstdlib>
-#include <chrono>
-#include <thread>
+#include <QTime>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/Source_Files/Cliente.cpp"
 using namespace std;
 
@@ -65,20 +64,26 @@ void MainWindow::on_btn_start_clicked(){
     ui -> btn_verif ->setDisabled(false);
 }
 
+void delay()
+{
+    QTime dieTime= QTime::currentTime().addSecs(3);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 
 //Boton verificar igualdad de cartas
 void MainWindow::on_btn_verif_clicked(){
     string img = ":/imagenes/SW_back.jpg";
     QString qstr = QString::fromStdString(img);
 
-    if(puntaje_jugador1 == 5 || puntaje_jugador2 == 5){
+    if(puntaje_jugador1 == 2 || puntaje_jugador2 == 2){
         ui->pwup_1->setDisabled(false);
     }
-    if(puntaje_jugador1 == 10 || puntaje_jugador2 == 10){
+    if(puntaje_jugador1 == 2 || puntaje_jugador2 == 2){
         ui->pwup_2->setDisabled(false);
     }
-    if(puntaje_jugador1 == 15 || puntaje_jugador2 == 15){
-        ui->pwup_2->setDisabled(false);
+    if(puntaje_jugador1 == 2 || puntaje_jugador2 == 2){
+        ui->pwup_3->setDisabled(false);
     }
 
     //Condicion de que ambas cartas son iguales
@@ -101,9 +106,6 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada1->setDisabled(true);
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
-
-
-
         }else{
             if((carta1_mem == "True") & (carta2_mem == "True")){
                 puntaje_jugador1 = puntaje_jugador1 + 1;
@@ -125,7 +127,6 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
         }
-        Cliente("Mix","0","0","0","0");
         if(i != 1){
             i = i - 1;
         }
@@ -177,10 +178,17 @@ int ChanceCartaAleatoria(string num, QPushButton* btn_carta){
         return 0;
 
     }
+    if(num_pw2_4 == "NULL"){
+        num_pw2_4 = num;
+        cout << "Carta 4 escogida: " << num_pw2_4 << endl;
+        carta_pw2_4 = btn_carta;
+        return 0;
+    }
     else{
         num_pw2_1 = "NULL";
         num_pw2_2 = "NULL";
         num_pw2_3 = "NULL";
+        num_pw2_4 = "NULL";
         cout << "Cartas reiniciadas" << endl;
     }
     return 0;
@@ -198,34 +206,59 @@ void MainWindow::on_pwup_1_clicked()
 //Mostar las últimas 4 cartas jugadas
 void MainWindow::on_pwup_2_clicked()
 {
-    ui->label_7->setText("Ojo las cartas Owo");
-    string img1 = Cliente("IMG",num_pw2_1,"0","0","0");
-    QString qstr1 = QString::fromStdString(img1);
-    carta_pw2_1 ->setIcon(QIcon(qstr1));
+    if(num_pw2_1 != "NULL"){
+        ui->label_7->setText("Ojo las cartas Owo");
+        cout << num_pw2_1 << endl;
+        string img1 = Cliente("IMG",num_pw2_1,"0","0","0");
+        img1.erase(img1.end() -1);
+        QString qstr1 = QString::fromStdString(img1);
+        carta_pw2_1 ->setIcon(QIcon(qstr1));
+    }
 
-    string img2 = Cliente("IMG",num_pw2_2,"0","0","0");
-    QString qstr2 = QString::fromStdString(img2);
-    carta_pw2_2 ->setIcon(QIcon(qstr2));
+    if(num_pw2_2 != "NULL"){
+        cout << num_pw2_2 << endl;
+        string img2 = Cliente("IMG",num_pw2_2,"0","0","0");
+        img2.erase(img2.end() -1);
+        QString qstr2 = QString::fromStdString(img2);
+        carta_pw2_2 ->setIcon(QIcon(qstr2));
+    }
 
-    string img3 = Cliente("IMG",num_pw2_3,"0","0","0");
-    QString qstr3 = QString::fromStdString(img3);
-    carta_pw2_3 ->setIcon(QIcon(qstr3));
-    /*
-    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+    if(num_pw2_3 != "NULL"){
+        cout << num_pw2_3 << endl;
+        string img3 = Cliente("IMG",num_pw2_3,"0","0","0");
+        img3.erase(img3.end() -1);
+        QString qstr3 = QString::fromStdString(img3);
+        carta_pw2_3 ->setIcon(QIcon(qstr3));
+    }
 
+    if(num_pw2_4 != "NULL"){
+        cout << num_pw2_4 << endl;
+        string img4 = Cliente("IMG",num_pw2_4,"0","0","0");
+        img4.erase(img4.end() -1);
+        QString qstr4 = QString::fromStdString(img4);
+        carta_pw2_4 ->setIcon(QIcon(qstr4));
+    }
+
+    delay();
     string img = ":/imagenes/SW_back.jpg";
     QString qstr = QString::fromStdString(img);
     carta_pw2_1 ->setIcon(QIcon(qstr));
     carta_pw2_2 ->setIcon(QIcon(qstr));
     carta_pw2_3 ->setIcon(QIcon(qstr));
-    */
+    carta_pw2_4 ->setIcon(QIcon(qstr));
+
 }
 
 //Robar un turno
 void MainWindow::on_pwup_3_clicked()
 {
-     ui->label_7->setText("Turno robado jejeje");
-
+    if(turno == true){
+        turno = false;
+    }
+    else{
+        turno = true;
+    }
+    ui->label_7->setText("Turno robado jejeje");
 }
 
 

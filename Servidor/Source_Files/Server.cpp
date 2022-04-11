@@ -8,7 +8,7 @@
 #include <string>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/Hashmap.cpp"
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/matriz_dinamica.cpp"
-#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/main.cpp"
+#include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/matriz.cpp"
  
 using namespace std;
  
@@ -47,12 +47,12 @@ int main()
  
     if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
     {
-        cout << host << " connected on port " << service << endl;
+        //cout << host << " connected on port " << service << endl;
     }
     else
     {
         inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-        cout << host << " connected on port " << ntohs(client.sin_port) << endl;
+        //cout << host << " connected on port " << ntohs(client.sin_port) << endl;
     }
  
     // Close listening socket
@@ -82,7 +82,7 @@ int main()
         
         if (bytesReceived == 0)
         {
-            cout << "Client disconnected " << endl;
+            //cout << "Client disconnected " << endl;
             break;
         }
         
@@ -128,6 +128,7 @@ int main()
         }
         if(command == "Mix"){
             revolverMatriz();
+            
             string num = "Terminado";
             send(clientSocket, num.c_str(), num.size() + 1, 0);
         }

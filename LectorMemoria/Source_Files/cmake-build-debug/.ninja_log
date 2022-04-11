@@ -1,9 +1,0 @@
-# ninja log v5
-1	283	1647481486321153744	CMakeFiles/LectorMemoria.dir/main.cpp.o	931f63796eb06a10
-283	348	1647481486385154865	LectorMemoria	bc444e5cea418edb
-1	261	1647481584590772144	CMakeFiles/LectorMemoria.dir/main.cpp.o	931f63796eb06a10
-261	322	1647481584650773073	LectorMemoria	bc444e5cea418edb
-0	314	1647481609271148916	CMakeFiles/LectorMemoria.dir/main.cpp.o	931f63796eb06a10
-314	401	1647481609359150240	LectorMemoria	bc444e5cea418edb
-1	267	1647483298409696651	CMakeFiles/LectorMemoria.dir/main.cpp.o	931f63796eb06a10
-267	322	1647483298465697004	LectorMemoria	bc444e5cea418edb

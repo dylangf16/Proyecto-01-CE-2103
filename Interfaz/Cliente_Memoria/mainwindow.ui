@@ -1600,7 +1600,7 @@
    </widget>
    <widget class="QPushButton" name="pwup_2">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -1660,7 +1660,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>null</string>
+     <string/>
     </property>
    </widget>
    <zorder>pushButton_55</zorder>

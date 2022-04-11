@@ -5,11 +5,6 @@
 #include <cstdlib>
 using namespace std;
 
-int card11 = 0;
-int card21 = 0;
-int card31 = 0;
-int card41 = 0;
-int card51 = 0;
 int nFilas = 6;
 int nCol = 10;
 int numeros[6][10];

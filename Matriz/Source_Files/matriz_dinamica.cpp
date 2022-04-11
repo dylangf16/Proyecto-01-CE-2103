@@ -15,10 +15,11 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
     cout << "Imprimiendo la matriz en memoria:" << endl;
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j < nCol; j++){
-            cout << *(*(puntero_matriz+i)+j);
+            cout << *(*(puntero_matriz+i)+j) << " ";
         }
         cout << "\n";
     }
+    cout << "\n";
 }
 
 string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul){
@@ -37,10 +38,10 @@ string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul)
 void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
     //Liberar la memoria utilizada en la matriz
     for (int i = 0; i < nFilas; i++){
-        delete[] puntero_matriz[i];
+        free(puntero_matriz[i]);
         puntero_matriz[i] = nullptr;
     }
-    delete[] puntero_matriz;
+    free(puntero_matriz);
     puntero_matriz = nullptr;
 }
 
@@ -60,28 +61,29 @@ string rellenarMatriz(int nFilas, int nCol, string num){
         }
     }
     
+    //Obtiene la memoria usada por el programa utilizando lineas de comando
     int id = getpid();
     string string("pmap ");
     string.append(to_string(id));
     string.append(" | tail -n 1 | awk '/[0-9]K/{print $2}'");
     char const *pchar = string.c_str();
-    cout << id << endl;
+    cout << "ID del programa: " << id << endl;
     int memoria_usada = system(pchar);
-    //mostrar_mem(memoria_usada);
-
-
     mostrarMatriz(puntero_matriz, nFilas, nCol);
+
+
     //std::this_thread::sleep_for(std::chrono::milliseconds(10000));
     std::string resul = buscar(puntero_matriz,nFilas,nCol,stoi(num),"False");
     eliminar_memoria(puntero_matriz,nFilas,nCol);
     return resul;
 }
 
-
+/*
 int main(){
     rellenarMatriz(8,7,"5");
     cout << "Fin del programa de matriz_dinamica" << endl;
 
     return 0;
 }
+*/
 

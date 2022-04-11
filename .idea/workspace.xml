@@ -11,28 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dc4fcf0b-14ed-4977-8df2-130ef802f99c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/imagenes.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente_Memoria/imagenes.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/imagenes/SW_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/imagenes/SW_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/imagenes/SW_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/imagenes/SW_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente_Memoria/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente_Memoria/mainwindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-177b44c5ae5bf29271da.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/.cmake/api/v1/reply/index-2022-03-17T14-18-50-0010.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/CMakeFiles/Matriz.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/Matriz" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/Matriz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Matriz/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/Cliente_Memoria" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/Cliente_Memoria" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/mainwindow.o" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/mainwindow.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.o" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/qrc_imagenes.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/ui_mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/build-Cliente_Memoria-Desktop-Debug/ui_mainwindow.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +53,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -93,6 +71,7 @@
       <workItem from="1646859920558" duration="93000" />
       <workItem from="1647636106425" duration="80000" />
       <workItem from="1647636949349" duration="5000" />
+      <workItem from="1649337857334" duration="134000" />
     </task>
     <servers />
   </component>
