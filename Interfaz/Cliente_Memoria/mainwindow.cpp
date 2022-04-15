@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sys/resource.h>
 #include <fstream>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <cstdlib>
 #include <QTime>
 #include "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Servidor/Source_Files/Cliente.cpp"
@@ -33,6 +33,8 @@ QPushButton* carta_pw2_4;
 bool turno = true;
 
 int i = 5;
+int fault;
+int hit;
 int j = 4;
 int puntaje_jugador1 = 0;
 int puntaje_jugador2 = 0;
@@ -52,6 +54,7 @@ MainWindow::~MainWindow(){
 
 //Boton empezar
 void MainWindow::on_btn_start_clicked(){
+    srand(time(NULL));
     Cliente("Start","0","0","0","0");
     ui -> name_jugador1 -> setText(ui->lineEdit->text());
     jugador1 = ui->lineEdit->text();
@@ -62,6 +65,14 @@ void MainWindow::on_btn_start_clicked(){
     ui -> lineEdit -> setDisabled(true);
     ui -> lineEdit_2 -> setDisabled(true);
     ui -> btn_verif ->setDisabled(false);
+    int posi = 1+rand() %2-1;
+    if(posi == 1){
+        ui -> turno -> setText(ui->lineEdit->text());
+        turno = true;
+    } else{
+        ui -> turno -> setText(ui->lineEdit_2->text());
+        turno = false;
+    }
 }
 
 void delay()
@@ -75,7 +86,10 @@ void delay()
 void MainWindow::on_btn_verif_clicked(){
     string img = ":/imagenes/SW_back.jpg";
     QString qstr = QString::fromStdString(img);
-
+    carta1_mem.erase(carta1_mem.end() -1);
+    carta2_mem.erase(carta2_mem.end() -1);
+    cout << carta1_mem << endl;
+    cout << carta2_mem << endl;
     if(puntaje_jugador1 == 2 || puntaje_jugador2 == 2){
         ui->pwup_1->setDisabled(false);
     }
@@ -86,17 +100,33 @@ void MainWindow::on_btn_verif_clicked(){
         ui->pwup_3->setDisabled(false);
     }
 
+    if(carta1_mem == "False"){
+        fault ++;
+    }
+    if(carta1_mem == "True"){
+        hit ++;
+    }
+    if(carta2_mem == "False"){
+        fault ++;
+    }
+    if(carta2_mem == "True"){
+        hit ++;
+    }
+
+    ui ->Fault ->setText(QString::number(fault));
+    ui ->Hit ->setText(QString::number(hit));
     //Condicion de que ambas cartas son iguales
     if(carta1 == carta2){
         if (turno == true){
             cout << "Cartas iguales" << endl;
             if((carta1_mem == "True") & (carta2_mem == "True")){
-                cout << "Cartas en memoria" << endl;
-                puntaje_jugador1 = puntaje_jugador1 + 1;
+                cout << "Cartas en memoria // pts extra" << endl;
+                puntaje_jugador1++;
                 carta1_mem = "False";
                 carta2_mem = "False";
             }
-            puntaje_jugador1 = puntaje_jugador1 + 1;
+            puntaje_jugador1++;
+            cout << puntaje_jugador1 << endl;
             QString s = QString::number(puntaje_jugador1);
             ui->pts_jugador1->setText(s);
             turno = false;
@@ -108,11 +138,12 @@ void MainWindow::on_btn_verif_clicked(){
             Cliente("Mix","0","0","0","0");
         }else{
             if((carta1_mem == "True") & (carta2_mem == "True")){
-                puntaje_jugador1 = puntaje_jugador1 + 1;
+                cout << "Cartas en memoria // pts extra" << endl;
+                puntaje_jugador2++;
                 carta1_mem = "False";
                 carta2_mem = "False";
             }
-            puntaje_jugador2 = puntaje_jugador2 + 1;
+            puntaje_jugador2++;
             QString s = QString::number(puntaje_jugador2);
             ui->pts_jugador2->setText(s);
             turno = true;
@@ -127,10 +158,10 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
         }
-        if(i != 1){
+        if(i != 2){
             i = i - 1;
         }
-        if(j != 1){
+        if(j != 2){
             j = j - 1;
         }
 

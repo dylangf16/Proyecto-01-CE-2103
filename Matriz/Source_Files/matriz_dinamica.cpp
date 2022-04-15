@@ -28,10 +28,12 @@ string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul)
             int num_matrix = *(*(puntero_matriz+i)+j);
             if(num_matrix == num){
                 resul = "True";
+                cout << resul << endl;
                 return resul;
             }
         }
     }
+    cout << resul << endl;
     return "False";
 }
 
@@ -63,7 +65,7 @@ string rellenarMatriz(int nFilas, int nCol, string num){
     
     //Obtiene la memoria usada por el programa utilizando lineas de comando
     int id = getpid();
-    string string("pmap ");
+    string string("pmap -p ");
     string.append(to_string(id));
     string.append(" | tail -n 1 | awk '/[0-9]K/{print $2}'");
     char const *pchar = string.c_str();

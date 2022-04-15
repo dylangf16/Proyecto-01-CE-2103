@@ -9,6 +9,7 @@ int nFilas = 6;
 int nCol = 10;
 int numeros[6][10];
 int numeros2[6][10];
+string linea3;
 
 void guardarmatrix(){
     ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
@@ -38,6 +39,7 @@ int aleatorio_en_rango(int minimo, int maximo) {
 
 void revolverMatriz(){
     ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
+    srand(time(NULL));
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j <nCol; j++){
             std::string linea;
@@ -72,6 +74,27 @@ void generarMatriz(){
     guardarmatrix();
     revolverMatriz();
     guardarmatrix2();
+}
+
+void mostrar_matriz_disco(int nFilasMem, int nColMem){
+    ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
+    int contador = 0;
+    int lim = nFilasMem*nColMem;
+    cout << "Imprimiendo la matriz en disco" << endl;
+    for (int i = 0; i < nFilas; i++){
+        for (int j = 0; j < nCol; j++){
+            if(contador >= lim){
+                getline(archivo,linea3);
+                cout << linea3 << " ";
+            }else{
+                getline(archivo,linea3);
+                contador++;
+            }
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+    
 }
 
 //Guarda la matriz en un txt para manipulación
