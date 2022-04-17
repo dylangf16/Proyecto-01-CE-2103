@@ -63,6 +63,8 @@ string rellenarMatriz(int nFilas, int nCol, string num){
         }
     }
     
+    cout << "Memoria usada: " << (nFilas + nCol) * 8*2  << "k" << endl;
+    /*
     //Obtiene la memoria usada por el programa utilizando lineas de comando
     int id = getpid();
     string string("pmap -p ");
@@ -71,9 +73,9 @@ string rellenarMatriz(int nFilas, int nCol, string num){
     char const *pchar = string.c_str();
     cout << "ID del programa: " << id << endl;
     int memoria_usada = system(pchar);
+    */
+
     mostrarMatriz(puntero_matriz, nFilas, nCol);
-
-
     //std::this_thread::sleep_for(std::chrono::milliseconds(10000));
     std::string resul = buscar(puntero_matriz,nFilas,nCol,stoi(num),"False");
     eliminar_memoria(puntero_matriz,nFilas,nCol);
@@ -82,7 +84,7 @@ string rellenarMatriz(int nFilas, int nCol, string num){
 
 /*
 int main(){
-    rellenarMatriz(8,7,"5");
+    rellenarMatriz(2,3,"5");
     cout << "Fin del programa de matriz_dinamica" << endl;
 
     return 0;

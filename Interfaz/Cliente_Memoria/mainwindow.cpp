@@ -88,8 +88,6 @@ void MainWindow::on_btn_verif_clicked(){
     QString qstr = QString::fromStdString(img);
     carta1_mem.erase(carta1_mem.end() -1);
     carta2_mem.erase(carta2_mem.end() -1);
-    cout << carta1_mem << endl;
-    cout << carta2_mem << endl;
     if(puntaje_jugador1 == 2 || puntaje_jugador2 == 2){
         ui->pwup_1->setDisabled(false);
     }
@@ -126,7 +124,6 @@ void MainWindow::on_btn_verif_clicked(){
                 carta2_mem = "False";
             }
             puntaje_jugador1++;
-            cout << puntaje_jugador1 << endl;
             QString s = QString::number(puntaje_jugador1);
             ui->pts_jugador1->setText(s);
             turno = false;
@@ -137,6 +134,7 @@ void MainWindow::on_btn_verif_clicked(){
             carta_jugada2->setDisabled(true);
             Cliente("Mix","0","0","0","0");
         }else{
+            cout << "Cartas iguales" << endl;
             if((carta1_mem == "True") & (carta2_mem == "True")){
                 cout << "Cartas en memoria // pts extra" << endl;
                 puntaje_jugador2++;
@@ -191,27 +189,23 @@ void MainWindow::on_btn_verif_clicked(){
 int ChanceCartaAleatoria(string num, QPushButton* btn_carta){
     if(num_pw2_1 == "NULL"){
         num_pw2_1 = num;
-        cout << "Carta 1 escogida: " << num_pw2_1<< endl;
         carta_pw2_1 = btn_carta;
         return 0;
     }
     if(num_pw2_2 == "NULL"){
         num_pw2_2 = num;
-        cout << "Carta 2 escogida: " << num_pw2_2<< endl;
         carta_pw2_2 = btn_carta;
         return 0;
 
     }
     if(num_pw2_3 == "NULL"){
         num_pw2_3 = num;
-        cout << "Carta 3 escogida: " << num_pw2_3 << endl;
         carta_pw2_3 = btn_carta;
         return 0;
 
     }
     if(num_pw2_4 == "NULL"){
         num_pw2_4 = num;
-        cout << "Carta 4 escogida: " << num_pw2_4 << endl;
         carta_pw2_4 = btn_carta;
         return 0;
     }
@@ -220,7 +214,6 @@ int ChanceCartaAleatoria(string num, QPushButton* btn_carta){
         num_pw2_2 = "NULL";
         num_pw2_3 = "NULL";
         num_pw2_4 = "NULL";
-        cout << "Cartas reiniciadas" << endl;
     }
     return 0;
 }
@@ -239,7 +232,6 @@ void MainWindow::on_pwup_2_clicked()
 {
     if(num_pw2_1 != "NULL"){
         ui->label_7->setText("Ojo las cartas Owo");
-        cout << num_pw2_1 << endl;
         string img1 = Cliente("IMG",num_pw2_1,"0","0","0");
         img1.erase(img1.end() -1);
         QString qstr1 = QString::fromStdString(img1);
@@ -247,7 +239,6 @@ void MainWindow::on_pwup_2_clicked()
     }
 
     if(num_pw2_2 != "NULL"){
-        cout << num_pw2_2 << endl;
         string img2 = Cliente("IMG",num_pw2_2,"0","0","0");
         img2.erase(img2.end() -1);
         QString qstr2 = QString::fromStdString(img2);
@@ -255,7 +246,6 @@ void MainWindow::on_pwup_2_clicked()
     }
 
     if(num_pw2_3 != "NULL"){
-        cout << num_pw2_3 << endl;
         string img3 = Cliente("IMG",num_pw2_3,"0","0","0");
         img3.erase(img3.end() -1);
         QString qstr3 = QString::fromStdString(img3);
@@ -263,7 +253,6 @@ void MainWindow::on_pwup_2_clicked()
     }
 
     if(num_pw2_4 != "NULL"){
-        cout << num_pw2_4 << endl;
         string img4 = Cliente("IMG",num_pw2_4,"0","0","0");
         img4.erase(img4.end() -1);
         QString qstr4 = QString::fromStdString(img4);
@@ -285,9 +274,11 @@ void MainWindow::on_pwup_3_clicked()
 {
     if(turno == true){
         turno = false;
+        ui -> turno -> setText(jugador2);
     }
     else{
         turno = true;
+        ui -> turno -> setText(jugador1);
     }
     ui->label_7->setText("Turno robado jejeje");
 }
