@@ -13,7 +13,7 @@
 using namespace std;
 
 
-
+//Función principal que ejecuta el servidor
 int main()
 {
     // Create a socket
@@ -112,6 +112,7 @@ int main()
             conteo +=1;
         }
 
+        //Ejecuta un comando según el primer valor del string recibido
         if(command == "IMG"){
             string num = buscar(0,0,val1);
             send(clientSocket, num.c_str(), num.size() + 1, 0);

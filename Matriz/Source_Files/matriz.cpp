@@ -11,6 +11,7 @@ int numeros[6][10];
 int numeros2[6][10];
 string linea3;
 
+//Guarda la matriz en memoria
 void guardarmatrix(){
     ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     for (int i = 0; i < nFilas; i++){
@@ -21,6 +22,8 @@ void guardarmatrix(){
     }
     archivo.close();
 }
+
+//Guarda la matriz en memoria
 void guardarmatrix2(){
     ofstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     for (int i = 0; i < nFilas; i++){
@@ -32,11 +35,12 @@ void guardarmatrix2(){
     archivo.close();
 }
 
+//Escoge una columna aleatoria para cambiar de posición
 int aleatorio_en_rango(int minimo, int maximo) {
     return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
 }
 
-
+//Revuelve la matriz obtenida del txt
 void revolverMatriz(){
     ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     srand(time(NULL));
@@ -62,6 +66,7 @@ void revolverMatriz(){
     guardarmatrix2();
 }
 
+//Genera la matriz original ordenada de mayor a menor
 void generarMatriz(){
     int num = 0;
     //Rellenando la matriz
@@ -76,6 +81,7 @@ void generarMatriz(){
     guardarmatrix2();
 }
 
+//Muestra la matriz en terminal
 void mostrar_matriz_disco(int nFilasMem, int nColMem){
     ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
     int contador = 0;
@@ -96,8 +102,6 @@ void mostrar_matriz_disco(int nFilasMem, int nColMem){
     cout << "\n";
     
 }
-
-//Guarda la matriz en un txt para manipulación
 
 /*
 int main() {

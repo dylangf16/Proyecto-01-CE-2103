@@ -13,7 +13,7 @@ int card3 = 0;
 int card4 = 0;
 int card5 = 0;
 
-
+//Función que distribuye aleatoriamente la imagen de las 60 cartas
 string verfi(int tipo){
     if(tipo == 1 & card1 < 12){
         string img = "/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Interfaz/Cliente_Memoria/imagenes/SW_1.jpg";

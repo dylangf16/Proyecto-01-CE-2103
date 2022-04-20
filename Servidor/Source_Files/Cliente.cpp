@@ -13,6 +13,7 @@ std::string str;
 
 using namespace std;
 
+//Función que ejecuta el cliente
 string Cliente(string command, string num_a_buscar, string i, string j, string x)
 {
     //	Create a socket
@@ -83,7 +84,8 @@ string Cliente(string command, string num_a_buscar, string i, string j, string x
             continue;
         }
         }
-
+        
+        //Comando para revolver la Matriz
         if (command == "Mix")
         {
         string userInput = command + "-" + "NULL";

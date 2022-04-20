@@ -11,6 +11,8 @@ using namespace std;
 int **puntero_matriz;
 string linea2;
 
+//Muestra la matriz en memoria
+//Esto lo hace recorriendo los punteros de punteros en memoria, y los va imprimiendo en forma de matriz en terminal
 void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
     cout << "Imprimiendo la matriz en memoria:" << endl;
     for (int i = 0; i < nFilas; i++){
@@ -22,6 +24,7 @@ void mostrarMatriz(int **puntero_matriz, int nFilas, int nCol){
     cout << "\n";
 }
 
+//Buscar el valor recibido por el servidor en la matriz dinamica de punteros
 string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul){
     for (int i = 0; i < nFilas; i++){
         for(int j = 0; j < nCol; j++){
@@ -37,6 +40,7 @@ string buscar(int **puntero_matriz, int nFilas, int nCol, int num, string resul)
     return "False";
 }
 
+//Libera la memoria de la matriz y les da un nullptr
 void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
     //Liberar la memoria utilizada en la matriz
     for (int i = 0; i < nFilas; i++){
@@ -47,7 +51,7 @@ void eliminar_memoria(int **puntero_matriz, int nFilas, int nCol){
     puntero_matriz = nullptr;
 }
 
-//Se reserva la matriz en memoria
+//Crea la matriz dinamica de punteros
 string rellenarMatriz(int nFilas, int nCol, string num){
     ifstream archivo("/home/dylan16/Documents/Datos2/Proyecto01/Proyecto-01-CE-2103/Matriz/Source_Files/disco.txt");
 
@@ -62,18 +66,7 @@ string rellenarMatriz(int nFilas, int nCol, string num){
             *(*(puntero_matriz+i)+j) = std::stoi(linea2);
         }
     }
-    
-    cout << "Memoria usada: " << (nFilas + nCol) * 8*2  << "k" << endl;
-    /*
-    //Obtiene la memoria usada por el programa utilizando lineas de comando
-    int id = getpid();
-    string string("pmap -p ");
-    string.append(to_string(id));
-    string.append(" | tail -n 1 | awk '/[0-9]K/{print $2}'");
-    char const *pchar = string.c_str();
-    cout << "ID del programa: " << id << endl;
-    int memoria_usada = system(pchar);
-    */
+    cout << "Memoria usada: " << (nFilas + nCol) * 8*2  << "k" << endl; //Cálculo de la memoria aproximada utilizada
 
     mostrarMatriz(puntero_matriz, nFilas, nCol);
     //std::this_thread::sleep_for(std::chrono::milliseconds(10000));
